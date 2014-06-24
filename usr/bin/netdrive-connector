@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd /usr/share/netdrive-connector
+./NetdriveConnector.py
