@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Project SYSTEM "Project-4.6.dtd">
+<!-- eric4 project file for project netdrive-connector -->
+<!-- Saved: 2014-06-25, 06:22:12 -->
+<!-- Copyright (C) 2014 Euan Thoms, euan@potensol.com -->
+<Project version="4.6">
+  <Language>en</Language>
+  <ProgLanguage mixed="0">Python</ProgLanguage>
+  <ProjectType>Qt4</ProjectType>
+  <Description>PyQt4 app to setup mountable SFTP and/or WebDAV connections.</Description>
+  <Version>1.0.1</Version>
+  <Author>Euan Thoms</Author>
+  <Email>euan@potensol.com</Email>
+  <Sources>
+    <Source>usr/share/netdrive-connector/NetdriveConnector.py</Source>
+    <Source>usr/share/netdrive-connector/LoginDialog.py</Source>
+    <Source>usr/share/netdrive-connector/ui_NetdriveConnectorWidget.py</Source>
+    <Source>usr/share/netdrive-connector/ui_LoginDialog.py</Source>
+    <Source>__init__.py</Source>
+  </Sources>
+  <Forms>
+    <Form>usr/share/netdrive-connector/NetdriveConnectorWidget.ui</Form>
+    <Form>usr/share/netdrive-connector/LoginDialog.ui</Form>
+  </Forms>
+  <Translations>
+  </Translations>
+  <Resources>
+  </Resources>
+  <Interfaces>
+  </Interfaces>
+  <Others>
+  </Others>
+  <MainScript>usr/share/netdrive-connector/NetdriveConnector.py</MainScript>
+  <Vcs>
+    <VcsType>None</VcsType>
+  </Vcs>
+  <FiletypeAssociations>
+    <FiletypeAssociation pattern="*.ui" type="FORMS" />
+    <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
+    <FiletypeAssociation pattern="*.qm" type="TRANSLATIONS" />
+    <FiletypeAssociation pattern="*.ptl" type="SOURCES" />
+    <FiletypeAssociation pattern="*.pyw" type="SOURCES" />
+    <FiletypeAssociation pattern="*.ui.h" type="FORMS" />
+    <FiletypeAssociation pattern="*.ts" type="TRANSLATIONS" />
+    <FiletypeAssociation pattern="*.py" type="SOURCES" />
+    <FiletypeAssociation pattern="*.qrc" type="RESOURCES" />
+  </FiletypeAssociations>
+</Project>
