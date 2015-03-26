@@ -1,7 +1,7 @@
 
 netdrive-connector: netdrive-connector (Netdrive Connector)
 netdrive-connector:
-netdrive-connector: GUI tool to setup mountable SFTP and WebDAV connections.
+netdrive-connector: Utility to setup mountable SFTP and WebDAV connections.
 netdrive-connector:
 netdrive-connector:
 netdrive-connector:

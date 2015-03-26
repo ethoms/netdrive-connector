@@ -1,20 +1,14 @@
-#!/usr/bin/python
-
-# Created by Euan A. Thoms <euan@potensol.com>
-#
-# Copyright Under the Simplified BSD  License
-
-
-import sys
-sys.path.append("/usr/share/netdrive-connector")
-from PyQt4 import QtCore, QtGui
-from ui_LoginDialog import Ui_LoginDialog
+import sys, os
+from PyQt4 import QtCore, QtGui, uic
+from PyQt4.QtCore import *
+from PyQt4.QtGui import *
 
 try:
-    _fromUtf8 = QtCore.QString.fromUtf8
+    _fromUtf8 = QString.fromUtf8
 except AttributeError:
     _fromUtf8 = lambda s: s
 
+( Ui_LoginDialog, QDialog ) = uic.loadUiType( os.path.join(os.path.dirname( __file__ ), 'LoginDialog.ui' ))
 
 class LoginDialog(QtGui.QDialog):
     
@@ -37,7 +31,7 @@ class LoginDialog(QtGui.QDialog):
         if len(self.username) < 1:
             warningMessage = QtGui.QMessageBox(self)
             warningMessage.setWindowTitle("Login Dialog - Error")
-            warningMessage.setText("No username supplied!")
+            warningMessage.setText("No usernames supplied!")
             warningMessage.setIcon(QtGui.QMessageBox.Warning)
             warningMessage.show()
             return False

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>NetdriveConnectorWidget</class>
- <widget class="QWidget" name="NetdriveConnectorWidget">
+ <class>NetdriveConnector</class>
+ <widget class="QWidget" name="NetdriveConnector">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -164,7 +164,7 @@
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>../../../../../../../../../../usr/share/icons/oxygen/16x16/places/folder-network.png</normaloff>../../../../../../../../../../usr/share/icons/oxygen/16x16/places/folder-network.png</iconset>
+		     <normaloff>/usr/share/pixmaps/netdrive-connector.png</normaloff>/usr/share/pixmaps/netdrive-connector.png</iconset>
             </property>
            </widget>
           </item>
@@ -350,7 +350,7 @@
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>../../../../../../../../../../usr/share/icons/oxygen/16x16/places/folder-network.png</normaloff>../../../../../../../../../../usr/share/icons/oxygen/16x16/places/folder-network.png</iconset>
+              <normaloff>/usr/share/pixmaps/netdrive-connector.png</normaloff>/usr/share/pixmaps/netdrive-connector.png</iconset>
             </property>
            </widget>
           </item>
@@ -437,7 +437,7 @@
   <connection>
    <sender>addSftpBtn</sender>
    <signal>clicked()</signal>
-   <receiver>NetdriveConnectorWidget</receiver>
+   <receiver>NetdriveConnector</receiver>
    <slot>addSftpBtnClicked()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -453,7 +453,7 @@
   <connection>
    <sender>addWebdavBtn</sender>
    <signal>clicked()</signal>
-   <receiver>NetdriveConnectorWidget</receiver>
+   <receiver>NetdriveConnector</receiver>
    <slot>addWebdavBtnClicked()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -469,7 +469,7 @@
   <connection>
    <sender>sftpMountpointBtn</sender>
    <signal>clicked()</signal>
-   <receiver>NetdriveConnectorWidget</receiver>
+   <receiver>NetdriveConnector</receiver>
    <slot>sftpMountpointBtnClicked()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -485,7 +485,7 @@
   <connection>
    <sender>webdavMountpointBtn</sender>
    <signal>clicked()</signal>
-   <receiver>NetdriveConnectorWidget</receiver>
+   <receiver>NetdriveConnector</receiver>
    <slot>webdavMountpointBtnClicked()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -501,7 +501,7 @@
   <connection>
    <sender>connectBtn</sender>
    <signal>clicked()</signal>
-   <receiver>NetdriveConnectorWidget</receiver>
+   <receiver>NetdriveConnector</receiver>
    <slot>connectBtnClicked()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -517,7 +517,7 @@
   <connection>
    <sender>disconnectBtn</sender>
    <signal>clicked()</signal>
-   <receiver>NetdriveConnectorWidget</receiver>
+   <receiver>NetdriveConnector</receiver>
    <slot>disconnectBtnClicked()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -533,7 +533,7 @@
   <connection>
    <sender>removeBtn</sender>
    <signal>clicked()</signal>
-   <receiver>NetdriveConnectorWidget</receiver>
+   <receiver>NetdriveConnector</receiver>
    <slot>removeBtnClicked()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -549,7 +549,7 @@
   <connection>
    <sender>httpRadioButton</sender>
    <signal>clicked()</signal>
-   <receiver>NetdriveConnectorWidget</receiver>
+   <receiver>NetdriveConnector</receiver>
    <slot>httpRadioBtnClicked()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -565,7 +565,7 @@
   <connection>
    <sender>httpsRadioButton</sender>
    <signal>clicked()</signal>
-   <receiver>NetdriveConnectorWidget</receiver>
+   <receiver>NetdriveConnector</receiver>
    <slot>httpsRadioBtnClicked()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -581,7 +581,7 @@
   <connection>
    <sender>sftpPasswordlessCheckBox</sender>
    <signal>clicked()</signal>
-   <receiver>NetdriveConnectorWidget</receiver>
+   <receiver>NetdriveConnector</receiver>
    <slot>sftpPasswordlessCheckBoxClicked()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -597,7 +597,7 @@
   <connection>
    <sender>webdavSavePasswordCheckBox</sender>
    <signal>clicked()</signal>
-   <receiver>NetdriveConnectorWidget</receiver>
+   <receiver>NetdriveConnector</receiver>
    <slot>webdavSavePasswordCheckBoxClicked()</slot>
    <hints>
     <hint type="sourcelabel">

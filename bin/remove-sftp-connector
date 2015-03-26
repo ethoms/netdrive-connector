@@ -1,0 +1,60 @@
+#!/bin/sh
+
+SERVER_URL=`echo $1 | sed "s|\:[0-9]*/|:/|"`
+MOUNT_POINT=$2
+SFTP_PORT=`echo $1 | sed "s|^.*:||" | sed "s|/.*||"`
+
+if [ "${SFTP_PORT}" = "" ]
+then
+  SFTP_PORT=22
+fi
+
+FS_TYPE="fuse.sshfs"
+
+BSD_SED_IN_PLACE="sed -i ''"
+GNU_SED_IN_PLACE="sed -i "
+
+OS=`uname -o`
+if [ $OS = 'GNU/Linux' ]
+then
+  SED_IN_PLACE=${GNU_SED_IN_PLACE}
+else
+  SED_IN_PLACE=${BSD_SED_IN_PLACE}
+fi
+
+get_mount_user(){
+
+  ## get mount point owner
+  MOUNT_USER=`ls -ld ${MOUNT_POINT} | awk '{print $3}'`
+  MOUNT_USER_GROUP=`ls -ld ${MOUNT_POINT} | awk '{print $4}'`
+  MOUNT_USER_FOLDER=`sudo -u ${MOUNT_USER} -s eval 'echo $HOME'`
+
+}
+
+remove_connection(){
+
+  ## test if connection exists
+  cat /etc/fstab | grep " ${FS_TYPE} " | grep "${SERVER_URL}" | grep "${MOUNT_POINT}" > /dev/null
+  if [ $? != 0 ]
+  then
+    echo ""
+    echo "ERROR (2): That connection is not setup"
+    echo ""
+    exit 2
+  fi
+
+  ## remove entry from fstab
+  ${SED_IN_PLACE} "\|^${SERVER_URL} ${MOUNT_POINT} ${FS_TYPE} .*|d" /etc/fstab
+
+}
+
+if [ $# = 2 ]
+then
+  get_mount_user
+  remove_connection
+else
+  echo ""
+  echo "Usage (1): $0 username@server_url mount_point"
+  echo "Example  : $0 http://webdav.example.com:80/shares /home/bill/Shares"
+  echo ""
+fi

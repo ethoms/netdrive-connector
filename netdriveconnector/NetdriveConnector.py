@@ -1,28 +1,25 @@
-#!/usr/bin/python
+import sys, os, subprocess
+from PyQt4 import QtCore, QtGui, uic
+from PyQt4.QtCore import *
+from PyQt4.QtGui import *
 
-# Created by Euan A. Thoms <euan@potensol.com>
-#
-# Copyright Under the Simplified BSD  License
-
-import sys
-sys.path.append("/usr/share/netdrive-connector")
-from PyQt4 import QtCore, QtGui
-import subprocess
-from ui_NetdriveConnectorWidget import Ui_NetdriveConnectorWidget
 from LoginDialog import LoginDialog
 
 try:
-    _fromUtf8 = QtCore.QString.fromUtf8
+    _fromUtf8 = QString.fromUtf8
 except AttributeError:
     _fromUtf8 = lambda s: s
-    
-class NetdriveConnector(QtGui.QWidget):
-    
-    def __init__(self):
-        QtGui.QWidget.__init__(self)
 
-        self.ui = Ui_NetdriveConnectorWidget()
-        self.ui.setupUi(self)
+( Ui_NetdriveConnector, QWidget ) = uic.loadUiType( os.path.join(os.path.dirname( __file__ ), 'NetdriveConnector.ui' ))
+
+
+class NetdriveConnector ( QWidget ):
+    """NetdriveConnector inherits QWidget"""
+
+    def __init__ ( self, parent = None ):
+        QWidget.__init__( self, parent )
+        self.ui = Ui_NetdriveConnector()
+        self.ui.setupUi( self )
         
         #shellCommand = str("whoami")
         #self.username = str (subprocess.check_output(shellCommand,shell=True)).splitlines()[0]
@@ -30,6 +27,9 @@ class NetdriveConnector(QtGui.QWidget):
         self.getHomeFolder()
 
         self.loadConnectionsTable()
+
+    def __del__ ( self ):
+        self.ui = None
         
     def loadConnectionsTable(self):
         
@@ -499,19 +499,3 @@ X-KDE-Username=
             warningMessage.setIcon(QtGui.QMessageBox.Warning)
             warningMessage.show()
             return False
-
-def main():
-    app = QtGui.QApplication(sys.argv)
-    netdriveConnector = NetdriveConnector()
-    layout = QtGui.QGridLayout()
-    layout.addWidget(netdriveConnector)
-    netdriveConnectorDialog = QtGui.QDialog()        
-    netdriveConnectorDialog.setLayout(layout)
-    netdriveConnectorDialog.setWindowTitle("Netdrive Connector")
-    netdriveConnectorDialog.resize(700,600)
-    netdriveConnectorDialog.setWindowIcon(QtGui.QIcon('/usr/share/icons/netdrive-connector.png'))
-    netdriveConnectorDialog.exec_()
-    sys.exit()
-
-if __name__ == '__main__':
-    main()
