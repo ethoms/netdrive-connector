@@ -1,0 +1,17 @@
+#!/bin/sh
+
+if [ $# -ne 3 ]
+then
+  echo ""
+  echo "This command is intended to be used internally for the netdrive-connector application."
+  echo ""
+  echo "Usage: ${0} [password] [command] [args]"
+  echo ""
+  exit 1
+fi
+
+PASSWORD=$1
+COMMAND=$2
+PARMS=$3
+
+expect -c "set timeout 12 ; spawn su -c \"${COMMAND} ${PARMS}\" root ; expect Password: ; send \"${PASSWORD}\r\" ; interact"

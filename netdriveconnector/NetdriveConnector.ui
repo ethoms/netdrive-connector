@@ -24,36 +24,32 @@
        <layout class="QGridLayout" name="gridLayout_4">
         <item row="0" column="0">
          <layout class="QGridLayout" name="gridLayout_3">
-          <item row="0" column="0">
-           <widget class="QLabel" name="connectionsTableLegendLbl">
-            <property name="text">
-             <string>Syntax: &lt;Remote URL&gt; &lt;Local mount point&gt; &lt;filesystem type&gt; &lt;options&gt; &lt;dump&gt; &lt;check&gt;  </string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="1">
-           <widget class="QPushButton" name="removeBtn">
-            <property name="text">
-             <string>Remove</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QPushButton" name="connectBtn">
-            <property name="text">
-             <string>Connect</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1">
+          <item row="7" column="1">
            <widget class="QPushButton" name="disconnectBtn">
             <property name="text">
              <string>Disconnect</string>
             </property>
            </widget>
           </item>
-          <item row="1" column="0" rowspan="4">
-           <widget class="QListWidget" name="connectionsListWidget">
+          <item row="0" column="0">
+           <widget class="QCheckBox" name="currentUserCheckBox">
+            <property name="text">
+             <string>Current user only</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="8" column="1">
+           <widget class="QPushButton" name="removeBtn">
+            <property name="text">
+             <string>Remove</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0" rowspan="8">
+           <widget class="QTableWidget" name="connectionsTableWidget">
             <property name="editTriggers">
              <set>QAbstractItemView::NoEditTriggers</set>
             </property>
@@ -63,9 +59,29 @@
             <property name="selectionBehavior">
              <enum>QAbstractItemView::SelectRows</enum>
             </property>
+            <attribute name="horizontalHeaderStretchLastSection">
+             <bool>true</bool>
+            </attribute>
+            <attribute name="verticalHeaderVisible">
+             <bool>false</bool>
+            </attribute>
            </widget>
           </item>
-          <item row="4" column="1">
+          <item row="0" column="1">
+           <widget class="QPushButton" name="refreshBtn">
+            <property name="text">
+             <string>Refresh</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <widget class="QPushButton" name="connectBtn">
+            <property name="text">
+             <string>Connect</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1" rowspan="5">
            <spacer name="verticalSpacer">
             <property name="orientation">
              <enum>Qt::Vertical</enum>
@@ -164,7 +180,7 @@
             </property>
             <property name="icon">
              <iconset>
-		     <normaloff>/usr/share/pixmaps/netdrive-connector.png</normaloff>/usr/share/pixmaps/netdrive-connector.png</iconset>
+              <normaloff>../../../../../usr/share/pixmaps/netdrive-connector.png</normaloff>../../../../../usr/share/pixmaps/netdrive-connector.png</iconset>
             </property>
            </widget>
           </item>
@@ -350,7 +366,7 @@
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>/usr/share/pixmaps/netdrive-connector.png</normaloff>/usr/share/pixmaps/netdrive-connector.png</iconset>
+              <normaloff>../../../../../usr/share/pixmaps/netdrive-connector.png</normaloff>../../../../../usr/share/pixmaps/netdrive-connector.png</iconset>
             </property>
            </widget>
           </item>
@@ -405,7 +421,9 @@
   </layout>
  </widget>
  <tabstops>
-  <tabstop>connectionsListWidget</tabstop>
+  <tabstop>currentUserCheckBox</tabstop>
+  <tabstop>refreshBtn</tabstop>
+  <tabstop>connectionsTableWidget</tabstop>
   <tabstop>connectBtn</tabstop>
   <tabstop>disconnectBtn</tabstop>
   <tabstop>removeBtn</tabstop>
@@ -505,8 +523,8 @@
    <slot>connectBtnClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>717</x>
-     <y>72</y>
+     <x>714</x>
+     <y>136</y>
     </hint>
     <hint type="destinationlabel">
      <x>729</x>
@@ -521,8 +539,8 @@
    <slot>disconnectBtnClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>708</x>
-     <y>78</y>
+     <x>714</x>
+     <y>163</y>
     </hint>
     <hint type="destinationlabel">
      <x>730</x>
@@ -537,8 +555,8 @@
    <slot>removeBtnClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>708</x>
-     <y>113</y>
+     <x>714</x>
+     <y>190</y>
     </hint>
     <hint type="destinationlabel">
      <x>729</x>
@@ -585,8 +603,8 @@
    <slot>sftpPasswordlessCheckBoxClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>13</x>
-     <y>288</y>
+     <x>29</x>
+     <y>301</y>
     </hint>
     <hint type="destinationlabel">
      <x>2</x>
@@ -610,6 +628,38 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>refreshBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>NetdriveConnector</receiver>
+   <slot>refreshBtnClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>688</x>
+     <y>39</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>729</x>
+     <y>14</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>currentUserCheckBox</sender>
+   <signal>clicked()</signal>
+   <receiver>NetdriveConnector</receiver>
+   <slot>currentUserCheckBoxClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>55</x>
+     <y>33</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>163</x>
+     <y>4</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>addSftpBtnClicked()</slot>
@@ -624,5 +674,7 @@
   <slot>httpsRadioBtnClicked()</slot>
   <slot>sftpPasswordlessCheckBoxClicked()</slot>
   <slot>webdavSavePasswordCheckBoxClicked()</slot>
+  <slot>refreshBtnClicked()</slot>
+  <slot>currentUserCheckBoxClicked()</slot>
  </slots>
 </ui>

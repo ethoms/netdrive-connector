@@ -8,34 +8,23 @@ try:
 except AttributeError:
     _fromUtf8 = lambda s: s
 
-( Ui_LoginDialog, QDialog ) = uic.loadUiType( os.path.join(os.path.dirname( __file__ ), 'LoginDialog.ui' ))
+( Ui_RootPasswordDialog, QDialog ) = uic.loadUiType( os.path.join(os.path.dirname( __file__ ), 'RootPasswordDialog.ui' ))
 
-class LoginDialog(QtGui.QDialog):
-    
-    
+class RootPasswordDialog(QtGui.QDialog):
 
-    def __init__(self, username):
+
+    def __init__(self):
         QtGui.QWidget.__init__(self)
 
-        self.ui = Ui_LoginDialog()
+        self.ui = Ui_RootPasswordDialog()
         self.ui.setupUi(self)
         
-        self.ui.usernameLineEdit.setText(username)
         self.isOK = False
         
     def loginOK(self):
         
-        self.username = self.ui.usernameLineEdit.text()
         self.password = self.ui.passwordLineEdit.text()
         
-        if len(self.username) < 1:
-            warningMessage = QtGui.QMessageBox(self)
-            warningMessage.setWindowTitle("Data Entry Error")
-            warningMessage.setText("No usernames supplied!")
-            warningMessage.setIcon(QtGui.QMessageBox.Warning)
-            warningMessage.show()
-            return False
-            
         if len(self.password) < 1:
             warningMessage = QtGui.QMessageBox(self)
             warningMessage.setWindowTitle("Data Entry Error")
@@ -51,5 +40,5 @@ class LoginDialog(QtGui.QDialog):
         self.isOK = False
         self.reject()
         
-    def getLoginCredentials(self):
-        return self.username,self.password
+    def getRootPassword(self):
+        return self.password

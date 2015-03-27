@@ -4,6 +4,7 @@ from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 
 from LoginDialog import LoginDialog
+from RootPasswordDialog import RootPasswordDialog
 
 try:
     _fromUtf8 = QString.fromUtf8
@@ -12,10 +13,12 @@ except AttributeError:
 
 ( Ui_NetdriveConnector, QWidget ) = uic.loadUiType( os.path.join(os.path.dirname( __file__ ), 'NetdriveConnector.ui' ))
 
+TOOLTIP_PREFIX = "Full fstab entry:  "
+SSHFS_INVALID_OPTIONS = ['users','noauto']
 
 class NetdriveConnector ( QWidget ):
-    """NetdriveConnector inherits QWidget"""
 
+    
     def __init__ ( self, parent = None ):
         QWidget.__init__( self, parent )
         self.ui = Ui_NetdriveConnector()
@@ -27,40 +30,69 @@ class NetdriveConnector ( QWidget ):
         self.getHomeFolder()
 
         self.loadConnectionsTable()
+        
+        self.ui.connectionsTableWidget.resizeColumnsToContents()
+        self.ui.connectionsTableWidget.resizeRowsToContents()
 
     def __del__ ( self ):
         self.ui = None
         
     def loadConnectionsTable(self):
         
-        self.ui.connectionsListWidget.clear()
+        self.ui.connectionsTableWidget.clear()
         
-        shellCommand = str("cat /etc/fstab | grep ' davfs '")
+        allConnections = []
+        
+        if self.ui.currentUserCheckBox.isChecked():
+            grepForCurrentUser = " | grep " + self.homeFolder
+        else:
+            grepForCurrentUser = ""
+        
+        shellCommand = str("cat /etc/fstab | grep -v '^#' | grep ' davfs '" + grepForCurrentUser)
         if subprocess.call(shellCommand,shell=True) == 0:
             davfsConnections = str (subprocess.check_output(shellCommand,shell=True)).splitlines()
+            allConnections = allConnections + davfsConnections
         else:
             davfsConnections = None
         
-        shellCommand = str("cat /etc/fstab | grep ' fuse.sshfs '")
+        shellCommand = str("cat /etc/fstab | grep -v '^#' | grep ' fuse.sshfs '" + grepForCurrentUser)
         if subprocess.call(shellCommand,shell=True) == 0:
             sftpConnections = str (subprocess.check_output(shellCommand,shell=True)).splitlines()
+            allConnections = allConnections + sftpConnections
         else:
             sftpConnections = None
-            
-        if davfsConnections != None:
-            self.ui.connectionsListWidget.addItems(davfsConnections)
-        if sftpConnections != None:
-            self.ui.connectionsListWidget.addItems(sftpConnections)
         
-        for i in range(self.ui.connectionsListWidget.count()):
-            listItem = self.ui.connectionsListWidget.item(i)
-            mountpoint =  listItem.text().split(' ')[1]
-            shellCommand = str("mount | grep ' " + mountpoint + " '")
+
+        self.ui.connectionsTableWidget.setColumnCount(2)
+        self.ui.connectionsTableWidget.setHorizontalHeaderLabels(('URL','Mount Point'))
+        self.ui.connectionsTableWidget.setRowCount(len(allConnections))
+        
+        row = 0
+        for rowData in allConnections:
+            url = rowData.split(' ')[0]
+            mountPoint = rowData.split(' ')[1]
+            
+            shellCommand = str("mount | grep ' " + str(mountPoint) + " '")
             if subprocess.call(shellCommand,shell=True) == 0:
-                listItem.setBackgroundColor(QtGui.QColor(100,200,100,80))
+                bgColour = QColor(100,200,100,80)
             else:
-                listItem.setBackgroundColor(QtGui.QColor(250,120,10,80))
-                
+                bgColour = QColor(250,120,10,80)
+            
+            tableItem = QtGui.QTableWidgetItem(url)
+            self.ui.connectionsTableWidget.setItem(row, 0, tableItem)
+            tableItem.setBackgroundColor(bgColour)
+            tableItem.setToolTip(TOOLTIP_PREFIX + rowData)
+            
+            tableItem = QtGui.QTableWidgetItem(mountPoint)
+            self.ui.connectionsTableWidget.setItem(row, 1, tableItem)
+            tableItem.setBackgroundColor(bgColour)
+            tableItem.setToolTip(TOOLTIP_PREFIX + rowData)
+            
+            row += 1
+            
+        self.ui.connectionsTableWidget.resizeRowsToContents()
+  
+
     def clearSftpFields(self):
         self.ui.sftpUsernameLineEdit.clear()
         self.ui.sftpHostnameLineEdit.clear()
@@ -71,8 +103,8 @@ class NetdriveConnector ( QWidget ):
         self.ui.sftpPasswordLineEdit.clear()
         self.ui.sftpAutoMountCheckBox.setCheckable(True)
         self.ui.sftpAutoMountCheckBox.setChecked(False)
-        
-        
+
+
     def clearWebdavFields(self):
         self.ui.webdavServerUrlLineEdit.clear()
         self.ui.webdavUriLineEdit.clear()
@@ -84,6 +116,9 @@ class NetdriveConnector ( QWidget ):
         self.ui.webdavPasswordLineEdit.clear()
         self.ui.webdavAutoMountCheckBox.setCheckable(True)
         self.ui.webdavAutoMountCheckBox.setChecked(False)
+
+    def currentUserCheckBoxClicked(self):
+        self.loadConnectionsTable()
         
     def sftpPasswordlessCheckBoxClicked(self):
         
@@ -104,8 +139,9 @@ class NetdriveConnector ( QWidget ):
         
     
     def connectBtnClicked(self):
+
         
-        if len(self.ui.connectionsListWidget.selectedItems()) < 1:
+        if len(self.ui.connectionsTableWidget.selectedItems()) < 1:
             warningMessage = QtGui.QMessageBox(self)
             warningMessage.setWindowTitle("Netdrive Connector - Error")
             warningMessage.setText("No connection selected. Please select a filesystem to connect.")
@@ -113,10 +149,18 @@ class NetdriveConnector ( QWidget ):
             warningMessage.show()
             return False
             
-        toConnect = self.ui.connectionsListWidget.selectedItems()[0].text()
+        toolTipText = str ( self.ui.connectionsTableWidget.selectedItems()[0].toolTip() )
+        toConnect = toolTipText[toolTipText.find(TOOLTIP_PREFIX)+len(TOOLTIP_PREFIX):]
         filesystem = toConnect.split(' ')[0]
         mountpoint =  toConnect.split(' ')[1]
         fsType = toConnect.split(' ')[2]
+        fstabMountOptions = toConnect.split(' ')[3].split(',')
+        mountOptions = ""
+        for option in fstabMountOptions:
+            if option not in SSHFS_INVALID_OPTIONS:
+                mountOptions = mountOptions + option + ","
+        if mountOptions is not "":
+            mountOptions = mountOptions[:-1]
         
         shellCommand = str("mount | grep ' " + mountpoint + " '")
         if subprocess.call(shellCommand,shell=True) == 0:
@@ -126,63 +170,86 @@ class NetdriveConnector ( QWidget ):
             warningMessage.setIcon(QtGui.QMessageBox.Warning)
             warningMessage.show()
             return False
-            
-        shellCommand = str("cat '" + self.homeFolder + "/.davfs2/secrets' | grep '^" + filesystem +" '")
-        if fsType == "davfs" and subprocess.call(shellCommand,shell=True) != 0:
-            isPasswordSaved = False
-            loginDialog = LoginDialog("")
-            loginDialog.exec_()
-            if not loginDialog.isOK:
-                return False
+
+        if fsType == "davfs":
+            shellCommand = str("cat '" + self.homeFolder + "/.davfs2/secrets' | grep '^" + filesystem +" '")
+            if subprocess.call(shellCommand,shell=True) != 0:
+                isWebdavPasswordSaved = False
+                loginDialog = LoginDialog("")
+                loginDialog.exec_()
+                if not loginDialog.isOK:
+                    return False
+                else:
+                    username,password = loginDialog.getLoginCredentials()
+                    shellCommand = str("echo '" + filesystem + " " + username + " " + password + "' >> '" + self.homeFolder + "/.davfs2/secrets'")
+                    if subprocess.call(shellCommand,shell=True) != 0:
+                        warningMessage = QtGui.QMessageBox(self)
+                        warningMessage.setWindowTitle("Netdrive Connector - Error")
+                        warningMessage.setText("ERROR: Failed to add username/password to secrets file.")
+                        warningMessage.setIcon(QtGui.QMessageBox.Warning)
+                        warningMessage.show()
             else:
-                username,password = loginDialog.getLoginCredentials()
-                shellCommand = str("echo '" + filesystem + " " + username + " " + password + "' >> '" + self.homeFolder + "/.davfs2/secrets'")
-                if subprocess.call(shellCommand,shell=True) != 0:
-                    warningMessage = QtGui.QMessageBox(self)
-                    warningMessage.setWindowTitle("Netdrive Connector - Error")
-                    warningMessage.setText("ERROR: Failed to add username/password to secrets file.")
-                    warningMessage.setIcon(QtGui.QMessageBox.Warning)
-                    warningMessage.show()
-        else:
-            isPasswordSaved = True
-            
-        shellCommand = str("mount " + mountpoint)
-        if subprocess.call(shellCommand,shell=True) != 0:
-            warningMessage = QtGui.QMessageBox(self)
-            warningMessage.setWindowTitle("Netdrive Connector - Error")
-            warningMessage.setText("Failed to connect filesystem: " + filesystem)
-            warningMessage.setIcon(QtGui.QMessageBox.Warning)
-            warningMessage.show()
-        else:
-            successMessage = QtGui.QMessageBox(self)
-            successMessage.setWindowTitle("Netdrive Connector - Success")
-            successMessage.setText("Successfully connected the remote filesystem: " + filesystem )
-            successMessage.setIcon(QtGui.QMessageBox.Information)
-            successMessage.show()
-            
-        if not isPasswordSaved:
-            #TODO: check for GNU/LInux or *BSD and use specific sed in-place command
-            shellCommand =  str('sed -i "\|^' + filesystem + ' .*|d" "' + self.homeFolder + '/.davfs2/secrets"')
+                isWebdavPasswordSaved = True
+                
+            shellCommand = str("mount " + mountpoint)
             if subprocess.call(shellCommand,shell=True) != 0:
                 warningMessage = QtGui.QMessageBox(self)
                 warningMessage.setWindowTitle("Netdrive Connector - Error")
-                warningMessage.setText("ERROR: Failed to remove username/password from secrets file.")
+                warningMessage.setText("Failed to connect filesystem: " + filesystem)
                 warningMessage.setIcon(QtGui.QMessageBox.Warning)
                 warningMessage.show()
+            else:
+                successMessage = QtGui.QMessageBox(self)
+                successMessage.setWindowTitle("Netdrive Connector - Success")
+                successMessage.setText("Successfully connected the remote filesystem: " + filesystem )
+                successMessage.setIcon(QtGui.QMessageBox.Information)
+                successMessage.show()
                 
-        self.loadConnectionsTable()
+            if not isWebdavPasswordSaved:
+                #TODO: check for GNU/LInux or *BSD and use specific sed in-place command
+                shellCommand =  str('sed -i "\|^' + filesystem + ' .*|d" "' + self.homeFolder + '/.davfs2/secrets"')
+                if subprocess.call(shellCommand,shell=True) != 0:
+                    warningMessage = QtGui.QMessageBox(self)
+                    warningMessage.setWindowTitle("Netdrive Connector - Error")
+                    warningMessage.setText("ERROR: Failed to remove username/password from secrets file.")
+                    warningMessage.setIcon(QtGui.QMessageBox.Warning)
+                    warningMessage.show()
+
+        if fsType == "fuse.sshfs":
             
+            # NOTE: since we rely on a ssh-askpass to graphically prompt for password (no tty),
+            #       we need to use sshfs instead of mount. At least on Slackware, mount does not initiate the ssh-askpass. 
+            
+            shellCommand = str("sshfs " + filesystem + " " + mountpoint + " -o " + mountOptions)
+            print shellCommand
+            if subprocess.call(shellCommand, shell=True) != 0:
+                warningMessage = QtGui.QMessageBox(self)
+                warningMessage.setWindowTitle("Netdrive Connector - Error")
+                warningMessage.setText("Failed to connect filesystem: " + filesystem)
+                warningMessage.setIcon(QtGui.QMessageBox.Warning)
+                warningMessage.show()
+            else:
+                successMessage = QtGui.QMessageBox(self)
+                successMessage.setWindowTitle("Netdrive Connector - Success")
+                successMessage.setText("Successfully connected the remote filesystem: " + filesystem )
+                successMessage.setIcon(QtGui.QMessageBox.Information)
+                successMessage.show()
+
+
+        self.loadConnectionsTable()
+
     def disconnectBtnClicked(self):
         
-        if len(self.ui.connectionsListWidget.selectedItems()) < 1:
+        if len(self.ui.connectionsTableWidget.selectedItems()) < 1:
             warningMessage = QtGui.QMessageBox(self)
             warningMessage.setWindowTitle("Netdrive Connector - Error")
             warningMessage.setText("No connection selected. Please select a filesystem to disconnect.")
             warningMessage.setIcon(QtGui.QMessageBox.Warning)
             warningMessage.show()
             return False
-            
-        toDisconnect = self.ui.connectionsListWidget.selectedItems()[0].text()
+
+        toolTipText = str ( self.ui.connectionsTableWidget.selectedItems()[0].toolTip() )
+        toDisconnect = toolTipText[toolTipText.find(TOOLTIP_PREFIX)+len(TOOLTIP_PREFIX):]
         mountpoint =  toDisconnect.split(' ')[1]
         
         shellCommand = str("mount | grep ' " + mountpoint + " '")
@@ -193,7 +260,7 @@ class NetdriveConnector ( QWidget ):
             warningMessage.setIcon(QtGui.QMessageBox.Warning)
             warningMessage.show()
             return False
-            
+
         shellCommand = str("umount " + mountpoint)
         if subprocess.call(shellCommand,shell=True) != 0:
             warningMessage = QtGui.QMessageBox(self)
@@ -207,16 +274,25 @@ class NetdriveConnector ( QWidget ):
             successMessage.setText("Successfully disconnected the remote filesystem mounted at: " + mountpoint)
             successMessage.setIcon(QtGui.QMessageBox.Information)
             successMessage.show()
-            
+
         self.loadConnectionsTable()
-            
+
     def removeBtnClicked(self):
-        
-        connection = self.ui.connectionsListWidget.selectedItems()[0].text()
+
+        if len(self.ui.connectionsTableWidget.selectedItems()) < 1:
+            warningMessage = QtGui.QMessageBox(self)
+            warningMessage.setWindowTitle("Netdrive Connector - Error")
+            warningMessage.setText("No connection selected. Please select a filesystem to remove.")
+            warningMessage.setIcon(QtGui.QMessageBox.Warning)
+            warningMessage.show()
+            return False
+
+        toolTipText = str ( self.ui.connectionsTableWidget.selectedItems()[0].toolTip() )
+        connection = toolTipText[toolTipText.find(TOOLTIP_PREFIX)+len(TOOLTIP_PREFIX):]
         filesystem = connection.split(' ')[0]
         mountpoint =  connection.split(' ')[1]
         fsType = connection.split(' ')[2]
-        
+
         shellCommand = str("mount | grep ' " + mountpoint + " '")
         if subprocess.call(shellCommand,shell=True) == 0:
             warningMessage = QtGui.QMessageBox(self)
@@ -225,40 +301,49 @@ class NetdriveConnector ( QWidget ):
             warningMessage.setIcon(QtGui.QMessageBox.Warning)
             warningMessage.show()
             return False
-        
+
         reply = QtGui.QMessageBox.question(self, 'Netdrive Connector',"Are you sure that you want to remove this connection?", \
                 QtGui.QMessageBox.Yes | QtGui.QMessageBox.No, QtGui.QMessageBox.No)
         if reply == QtGui.QMessageBox.No:
             return False
-        
+
         if fsType == "davfs":
             removeCmd = "remove-webdav-connector"
         elif fsType == "fuse.sshfs":
             removeCmd = "remove-sftp-connector"
-        
-        shellCommand = str("kdesu " + removeCmd + " " + filesystem + " "  + mountpoint)
-        if subprocess.call(shellCommand,shell=True) != 0:
+
+        rootPasswordDialog = RootPasswordDialog()
+        rootPasswordDialog.exec_()
+        if not rootPasswordDialog.isOK:
+            return False
+
+        password = rootPasswordDialog.getRootPassword()
+
+        removeConnectorParms = filesystem + " "  + mountpoint
+        if subprocess.call(['unbuffer','netdrive-connector_run-as-root', str(password), removeCmd, removeConnectorParms]) !=0:
             warningMessage = QtGui.QMessageBox(self)
             warningMessage.setWindowTitle("Netdrive Connector - Error")
             warningMessage.setText("Failed to remove the connection to : " + filesystem )
             warningMessage.setIcon(QtGui.QMessageBox.Warning)
             warningMessage.show()
         
+
         mountpointNoSlashes = str(mountpoint).replace("/","_")
-        
+
         shellCommand = str("rm " + self.homeFolder + "/.config/autostart/netdrive_connector" + mountpointNoSlashes + ".desktop" )
         if subprocess.call(shellCommand,shell=True) != 0:
             print "WARNING: problem whilst removing autostart file."
-        
+
         shellCommand = str("rm " + self.homeFolder + "/.kde/shutdown/netdrive_connector" + mountpointNoSlashes + ".sh" )
         if subprocess.call(shellCommand,shell=True) != 0:
             print "WARNING: problem whilst removing auto-shutdown file."
+
+        self.loadConnectionsTable()
+
+    def refreshBtnClicked(self):
         
         self.loadConnectionsTable()
-            
-    def makeShortcutBtnClicked(self):
-        pass
-    
+
     def addSftpBtnClicked(self):
         
         sftpUsername= self.ui.sftpUsernameLineEdit.text()
@@ -275,7 +360,7 @@ class NetdriveConnector ( QWidget ):
             warningMessage.setIcon(QtGui.QMessageBox.Warning)
             warningMessage.show()
             return False
-            
+
         if len(str(sftpHostname).replace(" ","")) < 1:
             warningMessage = QtGui.QMessageBox(self)
             warningMessage.setWindowTitle("Netdrive Connector - Error")
@@ -283,7 +368,7 @@ class NetdriveConnector ( QWidget ):
             warningMessage.setIcon(QtGui.QMessageBox.Warning)
             warningMessage.show()
             return False
-            
+
         if len(str(sftpPath).replace(" ","")) < 1:
             warningMessage = QtGui.QMessageBox(self)
             warningMessage.setWindowTitle("Netdrive Connector - Error")
@@ -291,7 +376,7 @@ class NetdriveConnector ( QWidget ):
             warningMessage.setIcon(QtGui.QMessageBox.Warning)
             warningMessage.show()
             return False
-            
+
         if len(str(sftpMountpoint).replace(" ","")) < 1:
             warningMessage = QtGui.QMessageBox(self)
             warningMessage.setWindowTitle("Netdrive Connector - Error")
@@ -299,7 +384,7 @@ class NetdriveConnector ( QWidget ):
             warningMessage.setIcon(QtGui.QMessageBox.Warning)
             warningMessage.show()
             return False
-            
+
         if self.ui.sftpPasswordlessCheckBox.isChecked() and len(str(sftpPassword).replace(" ","")) < 1:
             warningMessage = QtGui.QMessageBox(self)
             warningMessage.setWindowTitle("Netdrive Connector - Error")
@@ -307,11 +392,20 @@ class NetdriveConnector ( QWidget ):
             warningMessage.setIcon(QtGui.QMessageBox.Warning)
             warningMessage.show()
             return False
-            
-        shellCommand = str("kdesu add-sftp-connector '" + sftpUsername + "@" + sftpHostname + ":" + sftpPort + "/" + sftpPath + "' '" + sftpMountpoint + "'")
+
+        rootPasswordDialog = RootPasswordDialog()
+        rootPasswordDialog.exec_()
+        if not rootPasswordDialog.isOK:
+            return False
+
+        password = rootPasswordDialog.getRootPassword()
+        
         if self.ui.sftpPasswordlessCheckBox.isChecked():
-            shellCommand = str(shellCommand + " key " + sftpPassword) 
-        if subprocess.call(shellCommand,shell=True) != 0:
+            connectorParms = sftpUsername + "@" + sftpHostname + ":" + sftpPort + "/" + sftpPath + " " + sftpMountpoint + " key " + sftpPassword
+        else:
+            connectorParms = sftpUsername + "@" + sftpHostname + ":" + sftpPort + "/" + sftpPath + " " + sftpMountpoint
+
+        if subprocess.call(['unbuffer','netdrive-connector_run-as-root', str(password), 'add-sftp-connector', connectorParms]) !=0:
             warningMessage = QtGui.QMessageBox(self)
             warningMessage.setWindowTitle("Netdrive Connector - Error")
             warningMessage.setText("Failed to add the connection. ")
@@ -334,7 +428,6 @@ class NetdriveConnector ( QWidget ):
         webdavPassword = self.ui.webdavPasswordLineEdit.text()
         
         
-            
         if len(str(webdavURL).replace(" ","")) < 1:
             warningMessage = QtGui.QMessageBox(self)
             warningMessage.setWindowTitle("Netdrive Connector - Error")
@@ -374,11 +467,19 @@ class NetdriveConnector ( QWidget ):
             warningMessage.setIcon(QtGui.QMessageBox.Warning)
             warningMessage.show()
             return False
-            
-        shellCommand = str("kdesu add-webdav-connector '"+ webdavProtocol + webdavURL + ":" + webdavPort + "/" + webdavURI + "' '" + webdavMountpoint + "'")
+
+        rootPasswordDialog = RootPasswordDialog()
+        rootPasswordDialog.exec_()
+        if not rootPasswordDialog.isOK:
+            return False
+
+        password = rootPasswordDialog.getRootPassword()
+        
         if self.ui.webdavSavePasswordCheckBox.isChecked():
-            shellCommand = str(shellCommand + " " + webdavUsername + " " + webdavPassword) 
-        if subprocess.call(shellCommand,shell=True) != 0:
+            connectorParms = webdavProtocol + webdavURL + ":" + webdavPort + "/" + webdavURI + " " + webdavMountpoint + " " + webdavUsername + " " + webdavPassword
+        else:
+            connectorParms = webdavProtocol + webdavURL + ":" + webdavPort + "/" + webdavURI + " " + webdavMountpoint
+        if subprocess.call(['unbuffer','netdrive-connector_run-as-root', str(password), 'add-webdav-connector', connectorParms]) !=0:
             warningMessage = QtGui.QMessageBox(self)
             warningMessage.setWindowTitle("Netdrive Connector - Error")
             warningMessage.setText("Failed to add the connection. ")

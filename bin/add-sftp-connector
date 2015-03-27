@@ -66,7 +66,7 @@ copy_key_no_prompt(){
   SERVER_URL_NO_PATH=`echo ${SERVER_URL} | cut -d: -f1`
 
   ## copy ssh identity to server
-  sudo -u ${MOUNT_USER} expect -c "set timout 30 ; spawn ssh-copy-id -i ${MOUNT_USER_FOLDER}/.ssh/sftp_connector ${SERVER_URL_NO_PATH} -p ${SFTP_PORT} ; expect (yes/no)? ; send \"yes\r\" ; expect *?assword: ; send \"${SFTP_PASSWORD}\r\" ; expect *?assword: ; send \"${SFTP_PASSWORD}\r\" ; expect *?assword: ; send \"${SFTP_PASSWORD}\r\" ; interact"
+  sudo -u ${MOUNT_USER} expect -c "set timeout 30 ; spawn ssh-copy-id -i ${MOUNT_USER_FOLDER}/.ssh/sftp_connector ${SERVER_URL_NO_PATH} -p ${SFTP_PORT} ; expect (yes/no)? ; send \"yes\r\" ; expect *?assword: ; send \"${SFTP_PASSWORD}\r\" ; expect *?assword: ; send \"${SFTP_PASSWORD}\r\" ; expect *?assword: ; send \"${SFTP_PASSWORD}\r\" ; interact"
 }
 
 copy_key_prompt_pass(){

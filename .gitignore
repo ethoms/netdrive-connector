@@ -1,5 +1,8 @@
 # Compiled python modules.
 *.pyc
 
-# Setuptools build folder.
+# distutils build folder.
 /build/
+
+# distutils distributables folder. 
+/dist/

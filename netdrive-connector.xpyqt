@@ -16,17 +16,19 @@
 ##
 ###########################################################################################
 -->
-<project version="1.1.0" name="netdrive-connector">
+<project version="1.1" name="netdrive-connector">
     <variable name="XUP.MAIN_FILE">
         <value>netdriveconnector/main.py</value>
     </variable>
     <variable name="FORMS">
         <file>netdriveconnector/NetdriveConnector.ui</file>
         <file>netdriveconnector/LoginDialog.ui</file>
+        <file>netdriveconnector/RootPasswordDialog.ui</file>
     </variable>
     <variable name="PYTHON_FILES">
         <file>netdriveconnector/main.py</file>
         <file>netdriveconnector/NetdriveConnector.py</file>
         <file>netdriveconnector/LoginDialog.py</file>
+        <file>netdriveconnector/RootPasswordDialog.py</file>
     </variable>
 </project>
