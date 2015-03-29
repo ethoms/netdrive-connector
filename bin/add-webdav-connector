@@ -22,7 +22,7 @@ get_mount_user(){
   ## get mount point owner
   MOUNT_USER=`ls -ld ${MOUNT_POINT} | awk '{print $3}'`
   MOUNT_USER_GROUP=`ls -ld ${MOUNT_POINT} | awk '{print $4}'`
-  MOUNT_USER_FOLDER=`sudo -u ${MOUNT_USER} -s eval 'echo $HOME'`
+  MOUNT_USER_FOLDER=`su - ${MOUNT_USER} -c 'eval "echo $HOME"'`
 
 }
 

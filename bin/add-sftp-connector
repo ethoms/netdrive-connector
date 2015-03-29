@@ -28,7 +28,7 @@ get_mount_user(){
   ## get mount point owner
   MOUNT_USER=`ls -ld ${MOUNT_POINT} | awk '{print $3}'`
   MOUNT_USER_GROUP=`ls -ld ${MOUNT_POINT} | awk '{print $4}'`
-  MOUNT_USER_FOLDER=`sudo -u ${MOUNT_USER} -s eval 'echo $HOME'`
+  MOUNT_USER_FOLDER=`su - ${MOUNT_USER} -c 'eval "echo $HOME"'`
 
 }
 
@@ -54,7 +54,7 @@ add_connection(){
       mkdir ${MOUNT_USER_FOLDER}/.ssh
       chown ${MOUNT_USER}:${MOUNT_USER_GROUP} ${MOUNT_USER_FOLDER}/.ssh
     fi
-    sudo -u ${MOUNT_USER} ssh-keygen -q -f ${MOUNT_USER_FOLDER}/.ssh/sftp_connector -N ''
+    su - ${MOUNT_USER}  -c 'ssh-keygen -q -f '${MOUNT_USER_FOLDER}'/.ssh/sftp_connector -N ""' 
   fi
 
   echo "${SERVER_URL} ${MOUNT_POINT} ${FS_TYPE} ${MOUNT_OPTIONS},port=${SFTP_PORT},IdentityFile=${MOUNT_USER_FOLDER}/.ssh/sftp_connector 0 0" >> /etc/fstab
@@ -66,7 +66,7 @@ copy_key_no_prompt(){
   SERVER_URL_NO_PATH=`echo ${SERVER_URL} | cut -d: -f1`
 
   ## copy ssh identity to server
-  sudo -u ${MOUNT_USER} expect -c "set timeout 30 ; spawn ssh-copy-id -i ${MOUNT_USER_FOLDER}/.ssh/sftp_connector ${SERVER_URL_NO_PATH} -p ${SFTP_PORT} ; expect (yes/no)? ; send \"yes\r\" ; expect *?assword: ; send \"${SFTP_PASSWORD}\r\" ; expect *?assword: ; send \"${SFTP_PASSWORD}\r\" ; expect *?assword: ; send \"${SFTP_PASSWORD}\r\" ; interact"
+  su - ${MOUNT_USER} -c 'expect -c "set timeout 30 ; spawn ssh-copy-id -i '${MOUNT_USER_FOLDER}'/.ssh/sftp_connector '${SERVER_URL_NO_PATH}' -p '${SFTP_PORT}' ; expect (yes/no)? ; send \"yes\r\" ; expect *?assword: ; send \"'${SFTP_PASSWORD}'\r\" ; expect *?assword: ; send \"'${SFTP_PASSWORD}'\r\" ; expect *?assword: ; send \"'${SFTP_PASSWORD}'\r\" ; interact"'
 }
 
 copy_key_prompt_pass(){
@@ -74,7 +74,7 @@ copy_key_prompt_pass(){
   SERVER_URL_NO_PATH=`echo ${SERVER_URL} | cut -d: -f1`
 
   ## copy ssh identity to server
-  sudo -u ${MOUNT_USER} ssh-copy-id -i ${MOUNT_USER_FOLDER}/.ssh/sftp_connector ${SERVER_URL_NO_PATH} -p ${SFTP_PORT}
+  su - ${MOUNT_USER}  -c 'ssh-copy-id -i '${MOUNT_USER_FOLDER}'/.ssh/sftp_connector '${SERVER_URL_NO_PATH}' -p '${SFTP_PORT}
 }
 
 if [ $# = 2 ]
