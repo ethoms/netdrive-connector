@@ -14,4 +14,11 @@ PASSWORD=$1
 COMMAND=$2
 PARMS=$3
 
-expect -c "set timeout 12 ; spawn su -c \"${COMMAND} ${PARMS}\" root ; expect Password: ; send \"${PASSWORD}\r\" ; interact"
+SPAWN_CMD="su - root -c \"${COMMAND} ${PARMS}\""
+
+echo ${SPAWN_CMD} > /tmp/netdrive-connector-spawn-cmd
+chmod +x /tmp/netdrive-connector-spawn-cmd
+
+expect -c "set timeout 12 ; spawn /tmp/netdrive-connector-spawn-cmd ; expect Password: ; send \"${PASSWORD}\r\" ; interact"
+
+rm /tmp/netdrive-connector-spawn-cmd
