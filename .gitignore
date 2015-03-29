@@ -6,3 +6,6 @@
 
 # distutils distributables folder. 
 /dist/
+
+# distutils MANIFEST file
+MANIFEST
