@@ -70,8 +70,8 @@ an 'Issue' if you need assistance from me.
 **WARNING: The webdav connection script 'add-webdav-connector' will turn setuid 
 bit on /usr/bin/mount.davfs***
 
-Subject to the distribution and it's fuse, davfs2, sshfs packages, a user may need 
-adding to additional groups (fuse, davfs/davfs2 etc.).
+Subject to the distrbution and it's fuse, davfs2, sshfs packages, a user may need 
+adding to additional groups (fuse, davfs/davfs2 etc.)
 In Slackware, only the davfs2 group is required.
 
 An ssh-askpass program should be installed and configured to work with sshfs.
