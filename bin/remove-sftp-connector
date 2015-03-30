@@ -79,6 +79,6 @@ then
 else
   echo ""
   echo "Usage (1): $0 username@server_url mount_point"
-  echo "Example  : $0 http://webdav.example.com:80/shares /home/bill/Shares"
+  echo "Example  : $0 bill@host1.example.com:22/shares /home/bill/Shares"
   echo ""
 fi

@@ -94,7 +94,7 @@ NOTE:    : options (2) and (3) will add a local ssh key to the remote authorized
 # remove-sftp-connector
 
 Usage (1): /usr/bin/remove-sftp-connector username@server_url mount_point
-Example  : /usr/bin/remove-sftp-connector http://webdav.example.com:80/shares /home/bill/Shares
+Example  : /usr/bin/remove-sftp-connector bill@host1.example.com:22/shares /home/bill/Shares
 ```
 
 ### add-webdav-connector
