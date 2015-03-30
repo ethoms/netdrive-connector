@@ -111,7 +111,7 @@ Usage (3): /usr/bin/add-webdav-connector server_url mount_point username passwor
 Example  : /usr/bin/add-webdav-connector http://webdav.example.com:80/shares /home/bill/Shares bill opensesame
 !WARNING!: this method may save your password to the HISTFILE (command history)
 
-NOTE:    : options (2) and (3) will add an entry totthe ~/,davfs2/secrets file for password-less login.
+NOTE:    : options (2) and (3) will add an entry to the ~/,davfs2/secrets file for password-less login.
 ```
 
 ### remove-webdav-connector
