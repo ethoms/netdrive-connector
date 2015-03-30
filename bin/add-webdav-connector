@@ -127,6 +127,6 @@ else
   echo "Example  : $0 http://webdav.example.com:80/shares /home/bill/Shares bill opensesame"
   echo "!WARNING!: this method may save your password to the HISTFILE (command history)"
   echo ""
-  echo "NOTE:    : options (2) and (3) will add an entry to the ~/,davfs2/secrets file for password-less login."
+  echo "NOTE:    : options (2) and (3) will add an entry to the ~/.davfs2/secrets file for password-less login."
   echo ""
 fi
