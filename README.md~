@@ -39,7 +39,8 @@ for more distributions.
 
 ### From source:
 Make sure dependencies are installed (see below).
-Caveats: this method does not have an automatic uninstall mechanism.
+
+**Caveats:** this method does not have an automatic uninstall mechanism.
 ```
 git clone https://github.com/ethoms/netdrive-connector.git
 cd netdrive-connector
@@ -48,6 +49,8 @@ python setup.py install
 
 ### From basic rpm package:
 Make sure dependencies are installed (see below).
+
+**Caveats:** this will create a very basic rpm package without dependency information.
 ```
 git clone https://github.com/ethoms/netdrive-connector.git
 cd netdrive-connector
@@ -67,11 +70,11 @@ unix groups ( fuse, sshfs, davfs2). This varies depending on the distribution.
 I'm always willing to assist in packaging for as many distros as possible. Create
 an 'Issue' if you need assistance from me.
 
-**WARNING: The webdav connection script 'add-webdav-connector' will turn setuid 
+**WARNING: The webdav connection script 'add-webdav-connector' will turn the setuid 
 bit on /usr/bin/mount.davfs***
 
-Subject to the distrbution and it's fuse, davfs2, sshfs packages, a user may need 
-adding to additional groups (fuse, davfs/davfs2 etc.)
+Subject to the distribution and it's fuse, davfs2, sshfs packages, a user may need 
+adding to additional groups (fuse, davfs/davfs2 etc.).
 In Slackware, only the davfs2 group is required.
 
 An ssh-askpass program should be installed and configured to work with sshfs.
