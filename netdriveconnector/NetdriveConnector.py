@@ -110,7 +110,7 @@ class NetdriveConnector ( QWidget ):
             
         self.ui.connectionsTableWidget.resizeColumnsToContents()
         self.ui.connectionsTableWidget.resizeRowsToContents()
-	header = table.horizontalHeader()
+	header = self.ui.connectionsTableWidget.horizontalHeader()
 	header.setStretchLastSection(True)
   
 

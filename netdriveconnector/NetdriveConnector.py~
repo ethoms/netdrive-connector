@@ -48,15 +48,9 @@ class NetdriveConnector ( QWidget ):
         self.ui = Ui_NetdriveConnector()
         self.ui.setupUi( self )
         
-        #shellCommand = str("whoami")
-        #self.username = str (subprocess.check_output(shellCommand,shell=True)).splitlines()[0]
-        
         self.getHomeFolder()
 
         self.loadConnectionsTable()
-        
-        self.ui.connectionsTableWidget.resizeColumnsToContents()
-        self.ui.connectionsTableWidget.resizeRowsToContents()
 
     def __del__ ( self ):
         self.ui = None
@@ -114,7 +108,10 @@ class NetdriveConnector ( QWidget ):
             
             row += 1
             
+        self.ui.connectionsTableWidget.resizeColumnsToContents()
         self.ui.connectionsTableWidget.resizeRowsToContents()
+	header = table.horizontalHeader()
+	header.setStretchLastSection(True)
   
 
     def clearSftpFields(self):
