@@ -1,0 +1,16 @@
+Changelog
+==========
+
+1.2 (2016/01/28)
+~~~~~~~~~~~~~~~~
+
+* Changed README.md (Markdown) to README.rst (ReStructured Text).
+* Changed python packaging (setup.py) from distutils to setuptools.
+* Preparation for uploading to PyPi (pip).
+* Fix: The connections list (table) columns, when adding first 
+  connection, are now spaced properly.
+
+1.1 (2015.03.29)
+~~~~~~~~~~~~~~~~
+
+* Initial public release.
