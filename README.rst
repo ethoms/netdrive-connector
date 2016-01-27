@@ -75,7 +75,7 @@ Make sure dependencies are installed (see below).
 
 Make sure dependencies are installed (see below).
 
-*Caveats:* this will create a very basic rpm package without dependency information.
+*Caveats: this will create a very basic rpm package without dependency information.*
 
 .. code-block:: shell
 
@@ -85,7 +85,7 @@ Make sure dependencies are installed (see below).
     rpm -ivh netdrive-connector-*.noarch.rpm
 
 This may be converted to other packaging systems using 'alien'.
-[Alien How To] (https://www.howtoforge.com/converting_rpm_to_deb_with_alien)
+See `Alien How To <https://www.howtoforge.com/converting_rpm_to_deb_with_alien>`_.
 
 
 Usage Notes
@@ -189,11 +189,12 @@ Dependencies
 - *openssh-client*
 - *awk, grep, ls, cut, chown, cat, chmod, sed, uname, who*
 
-*Note:* Either davfs2 or sshfs are not required if that connection type is unused.
+*Note: Either davfs2 or sshfs are not required if that connection type is unused.*
 
 
 Screenshots
 ~~~~~~~~~~~
 
 *netdrive-connector Main Window*
+
 .. image:: screenshots/netdrive-connector1.png
