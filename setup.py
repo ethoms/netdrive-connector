@@ -12,7 +12,7 @@ setup(
     version='1.2',
     include_package_data=True,
     license='BSD License',
-    description='GUI tool to setup mountable SFTP and WebDAV connections.',
+    description='GUI tool to setup mountable SFTP and WebDAV connections on Linx/UNIX systems.',
     long_description=README,
     url='http://github.com/ethoms/netdrive-connector/',
     author='Euan Thoms',

@@ -1,7 +1,7 @@
 netdrive-connector
 ==================
 
-**Utility to setup mountable SFTP and WebDAV connections.**
+**Utility to setup mountable SFTP and WebDAV connections on Linux/UNIX systems.**
 
 
 Introduction
@@ -55,7 +55,7 @@ Installation Notes
 
 Make sure dependencies are installed (see below).
 
-.. code-block:: shell
+.. code-block::
 
     pip install netdrive-connector
 
@@ -63,7 +63,7 @@ Make sure dependencies are installed (see below).
 
 Make sure dependencies are installed (see below).
 
-.. code-block:: shell
+.. code-block::
 
     git clone https://github.com/ethoms/netdrive-connector.git
     cd netdrive-connector
@@ -77,7 +77,7 @@ Make sure dependencies are installed (see below).
 
 *Caveats: this will create a very basic rpm package without dependency information.*
 
-.. code-block:: shell
+.. code-block::
 
     git clone https://github.com/ethoms/netdrive-connector.git
     cd netdrive-connector
@@ -85,7 +85,7 @@ Make sure dependencies are installed (see below).
     rpm -ivh netdrive-connector-*.noarch.rpm
 
 This may be converted to other packaging systems using 'alien'.
-See `Alien How To <https://www.howtoforge.com/converting_rpm_to_deb_with_alien>`_.
+See this `Alien How To <https://www.howtoforge.com/converting_rpm_to_deb_with_alien>`_.
 
 
 Usage Notes
@@ -99,7 +99,7 @@ connections. These are as follows:
 
 **add-sftp-connector**
 
-.. code-block:: shell
+.. code-block::
 
     # add-sftp-connector
     
@@ -120,7 +120,7 @@ connections. These are as follows:
 
 **remove-sftp-connector**
 
-.. code-block:: shell
+.. code-block::
 
     # remove-sftp-connector
     
@@ -130,7 +130,7 @@ connections. These are as follows:
 
 **add-webdav-connector**
 
-.. code-block:: shell
+.. code-block::
 
     # add-webdav-connector
     
@@ -148,7 +148,7 @@ connections. These are as follows:
 
 **remove-webdav-connector**
 
-.. code-block:: shell
+.. code-block::
 
     # remove-webdav-connector
     
@@ -159,35 +159,31 @@ connections. These are as follows:
 Packaging Notes
 ~~~~~~~~~~~~~~~
 
-I'm always willing to assist in packaging for as many distros as possible. Create
-an 'Issue' if you need assistance from me.
-
-*WARNING:* The webdav connection script 'add-webdav-connector' will turn the setuid 
-bit on /usr/bin/mount.davfs
-
-Subject to the distribution and it's fuse, davfs2, sshfs packages, a user may need 
-adding to additional groups (fuse, davfs/davfs2 etc.). In Slackware, only the davfs2 
-group is required.
-
-An ssh-askpass program should be installed and configured to work with sshfs.
-
-At some point in the operation of adding/removing connections, a temporary 
-script is placed in /tmp and given execute permission. After use it is deleted. 
-A regular user will need permissions to do this.
+- I'm always willing to assist in packaging for as many distros as possible. Create
+  an 'Issue' if you need assistance from me.
+- Subject to the distribution and it's fuse, davfs2, sshfs packages, a user may need 
+  adding to additional groups (fuse, davfs/davfs2 etc.). In Slackware, only the davfs2 
+  group is required.
+- An ssh-askpass program should be installed and configured to work with sshfs.
+- At some point in the operation of adding/removing connections, a temporary 
+  script is placed in /tmp and given execute permission. After use it is deleted. 
+  A regular user will need permissions to do this.
+- *WARNING: The webdav connection script 'add-webdav-connector' will turn the setuid 
+  bit on /usr/bin/mount.davfs*
 
 
 Dependencies
 ~~~~~~~~~~~~
 
-- *python* v2.7 or above (not python 3)
-- *PyQt4* v4.8 or above (python-qt4 on debian based distros)
-- *ssh-askpass*, or a variant of. Tested with *x11-ssh-askpass*.
-- *expect* (version 5.x or above should be OK)
-- *fuse*
-- *sshfs* (*sshfs-fuse*) v2.4 or above recommended
-- *davfs2* v1.4.6 or above recommended
-- *openssh-client*
-- *awk, grep, ls, cut, chown, cat, chmod, sed, uname, who*
+- **python** v2.7 or above (not python 3)
+- **PyQt4** v4.8 or above (python-qt4 on debian based distros)
+- **ssh-askpass**, or a variant of. Tested with *x11-ssh-askpass*.
+- **expect** (version 5.x or above should be OK)
+- **fuse**
+- **sshfs** (*sshfs-fuse*) v2.4 or above recommended
+- **davfs2** v1.4.6 or above recommended
+- **openssh-client**
+- awk, grep, ls, cut, chown, cat, chmod, sed, uname, who
 
 *Note: Either davfs2 or sshfs are not required if that connection type is unused.*
 
@@ -195,6 +191,6 @@ Dependencies
 Screenshots
 ~~~~~~~~~~~
 
-*netdrive-connector Main Window*
+**netdrive-connector Main Window**
 
 .. image:: screenshots/netdrive-connector1.png
