@@ -1,6 +1,8 @@
 # Compiled python modules.
 *.pyc
-*.py~
+
+# editor backup files
+*.*~
 
 # distutils build folder.
 /build/
@@ -10,3 +12,8 @@
 
 # distutils MANIFEST file
 MANIFEST
+
+# packaging working files
+*.egg
+*.egg-info
+docs/_build
