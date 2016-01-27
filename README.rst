@@ -169,21 +169,21 @@ Packaging Notes
   script is placed in /tmp and given execute permission. After use it is deleted. 
   A regular user will need permissions to do this.
 - *WARNING: The webdav connection script 'add-webdav-connector' will turn the setuid 
-  bit on /usr/bin/mount.davfs*
+  bit on /usr/bin/mount.davfs*.
 
 
 Dependencies
 ~~~~~~~~~~~~
 
-- **python** v2.7 or above (not python 3)
-- **PyQt4** v4.8 or above (python-qt4 on debian based distros)
+- **python** v2.7 or above (not python 3).
+- **PyQt4** v4.8 or above (python-qt4 on debian based distros).
 - **ssh-askpass**, or a variant of. Tested with *x11-ssh-askpass*.
-- **expect** (version 5.x or above should be OK)
-- **fuse**
-- **sshfs** (*sshfs-fuse*) v2.4 or above recommended
-- **davfs2** v1.4.6 or above recommended
-- **openssh-client**
-- awk, grep, ls, cut, chown, cat, chmod, sed, uname, who
+- **expect** (version 5.x or above should be OK).
+- **fuse**.
+- **sshfs** (*sshfs-fuse*) v2.4 or above recommended.
+- **davfs2** v1.4.6 or above recommended.
+- **openssh-client**.
+- awk, grep, ls, cut, chown, cat, chmod, sed, uname, who.
 
 *Note: Either davfs2 or sshfs are not required if that connection type is unused.*
 
