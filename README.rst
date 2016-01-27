@@ -35,7 +35,7 @@ Current Limitations
 ~~~~~~~~~~~~~~~~~~~
 
 - The auto unmount at logout is KDE centric (uses ~/.kde/shutdown). Please let me 
-know if there is a logout script for other DE's / WM's.
+  know if there is a logout script for other DE's / WM's.
 - No UI localization support (English only).
 - Only available for Linux. Hopefully FreeBSD to follow soon (sshfs only).
 - Makes some assumptions about the system configuration.
@@ -46,10 +46,10 @@ Installation Notes
 
 - Always check in your distributions' repository first.
 - If no packages are available for your distribution, install distro specific
-dependencies then install from PyPi (pip).
+  dependencies then install from PyPi (pip).
 - Slackware has a SlackBuild maintained by me (primary developer).
 - I'll try to add more to the 'release' section as I get time and help to package 
-for more distributions.
+  for more distributions.
 
 **From PyPi (pip)**
 
