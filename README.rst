@@ -193,4 +193,4 @@ Screenshots
 
 **netdrive-connector Main Window**
 
-.. image:: screenshots/netdrive-connector1.png
+.. image:: https://github.com/ethoms/netdrive-connector/screenshots/netdrive-connector1.png

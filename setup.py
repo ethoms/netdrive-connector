@@ -11,7 +11,7 @@ setup(
     name='netdrive-connector',
     version='1.2',
     license='BSD License',
-    description='GUI tool to setup mountable SFTP and WebDAV connections on Linx/UNIX systems.',
+    description='GUI tool to setup mountable SFTP and WebDAV connections on Linux/UNIX systems.',
     long_description=README,
     url='http://github.com/ethoms/netdrive-connector/',
     author='Euan Thoms',
