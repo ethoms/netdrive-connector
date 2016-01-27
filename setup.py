@@ -10,7 +10,6 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 setup(
     name='netdrive-connector',
     version='1.2',
-    include_package_data=True,
     license='BSD License',
     description='GUI tool to setup mountable SFTP and WebDAV connections on Linx/UNIX systems.',
     long_description=README,
@@ -32,8 +31,8 @@ setup(
     ],
     keywords='connect remote network filesystem mount davfs webdav fuse sshfs sftp',
     packages=['netdriveconnector'],
-    #package_dir={'netdriveconnector': 'netdriveconnector'},
     package_data={'netdriveconnector': ['*.ui']},
+    include_package_data=True,
     data_files=[
         ('share/pixmaps',['data/netdrive-connector.png']),
         ('share/applications',['data/netdrive-connector.desktop']),
