@@ -57,7 +57,7 @@ Make sure dependencies are installed (see below).
 
 .. code-block::
 
-    pip install netdrive-connector
+    pip2 install netdrive-connector
 
 **From source**
 
