@@ -26,7 +26,7 @@ The changes are as follows:
 - Check for missing davfs2 group membership and warn user if so.
 - Use *fusermount -u* instead of *umount* for sshfs unmount. On some
   distros, unmount of a sshfs filesystem, by a normal user, will fail.
-- Big improvement to autoimatic mount and unmount at login/logout. 
+- Big improvement to automatic mount and unmount at login/logout. 
   This is no longer KDE centric and should work on any DE/WM that uses 
   ~/.config/autostart/*.desktop to start applications at login. 
   So far it's only tested on Slackware.
