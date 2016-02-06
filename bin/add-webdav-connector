@@ -66,13 +66,6 @@ add_connection(){
 
   echo "${SERVER_URL} ${MOUNT_POINT} ${FS_TYPE} ${MOUNT_OPTIONS} 0 0" >> /etc/fstab
 
-  ## make sure mount.davfs has setuid bit
-  DAVFS_MOUNT_CMD_PERMS=`ls -l /usr/sbin/mount.davfs* | awk '{print $1}'`
-  if [ "${DAVFS_MOUNT_CMD_PERMS}" != "-rwsr-sr-x" ]
-  then
-    chmod +s /usr/sbin/mount.davfs*
-  fi
-
   ## make sure ~/.davfs2/secrets exists with correct permissions
   if [ ! -d ${MOUNT_USER_FOLDER}/.davfs2 ]
   then
