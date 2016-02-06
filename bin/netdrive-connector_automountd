@@ -1,0 +1,29 @@
+#!/bin/bash
+
+MOUNTPOINT=$1
+FS_TYPE=$2
+
+trap cleanup 1 2 3 6 9 11 15
+
+cleanup()
+{
+  if [ "${FS_TYPE}" = "fuse.sshfs" ]
+  then
+    fusermount -u ${MOUNTPOINT}
+  else
+    umount ${MOUNTPOINT}
+  fi
+  if [ $? = 0 ]
+  then
+    exit 0
+  else
+    exit 1
+  fi
+}
+
+mount ${MOUNTPOINT}
+
+while true
+do
+  sleep 5
+done

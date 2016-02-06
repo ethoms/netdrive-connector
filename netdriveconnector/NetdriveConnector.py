@@ -50,11 +50,30 @@ class NetdriveConnector ( QWidget ):
         
         self.getHomeFolder()
 
+        self.dependencyCheck()
+
         self.loadConnectionsTable()
 
     def __del__ ( self ):
         self.ui = None
-        
+
+    def dependencyCheck(self):
+        shellCommand = str("groups | egrep 'davfs2 | davfs2'")
+        if subprocess.call(shellCommand,shell=True) != 0:
+            warningMessage = QtGui.QMessageBox(self)
+            warningMessage.setWindowTitle("Netdrive Connector - Warning")
+            message =\
+"""
+WARNING: The currently logged in user is not a member of the davfs2 group.
+
+This will likely cause the mounting of WebDAV connections to fail.
+
+Consider adding this user account to the davfs2 group. Consult your OS/distributions guide for how to add a user to a group.
+"""
+            warningMessage.setText(message)
+            warningMessage.setIcon(QtGui.QMessageBox.Warning)
+            warningMessage.show()
+ 
     def loadConnectionsTable(self):
         
         self.ui.connectionsTableWidget.clear()
@@ -260,7 +279,7 @@ class NetdriveConnector ( QWidget ):
         self.loadConnectionsTable()
 
     def disconnectBtnClicked(self):
-        
+ 
         if len(self.ui.connectionsTableWidget.selectedItems()) < 1:
             warningMessage = QtGui.QMessageBox(self)
             warningMessage.setWindowTitle("Netdrive Connector - Error")
@@ -272,7 +291,8 @@ class NetdriveConnector ( QWidget ):
         toolTipText = str ( self.ui.connectionsTableWidget.selectedItems()[0].toolTip() )
         toDisconnect = toolTipText[toolTipText.find(TOOLTIP_PREFIX)+len(TOOLTIP_PREFIX):]
         mountpoint =  toDisconnect.split(' ')[1]
-        
+        fs_type =  toDisconnect.split(' ')[2]
+ 
         shellCommand = str("mount | grep ' " + mountpoint + " '")
         if subprocess.call(shellCommand,shell=True) != 0:
             warningMessage = QtGui.QMessageBox(self)
@@ -282,7 +302,10 @@ class NetdriveConnector ( QWidget ):
             warningMessage.show()
             return False
 
-        shellCommand = str("umount " + mountpoint)
+        if fs_type == "fuse.sshfs":
+            shellCommand = str("fusermount -u " + mountpoint)
+        else:
+            shellCommand = str("umount " + mountpoint)
         if subprocess.call(shellCommand,shell=True) != 0:
             warningMessage = QtGui.QMessageBox(self)
             warningMessage.setWindowTitle("Netdrive Connector - Error")
@@ -434,7 +457,7 @@ class NetdriveConnector ( QWidget ):
             warningMessage.show()
         else:
             if self.ui.sftpAutoMountCheckBox.isChecked():
-                self.addAutoMount(sftpMountpoint)
+                self.addAutoMount(sftpMountpoint, "fuse.sshfs")
             self.clearSftpFields()
             self.loadConnectionsTable()
     
@@ -508,7 +531,7 @@ class NetdriveConnector ( QWidget ):
             warningMessage.show()
         else:
             if self.ui.webdavAutoMountCheckBox.isChecked():
-                self.addAutoMount(webdavMountpoint)
+                self.addAutoMount(webdavMountpoint, "davfs")
             self.clearWebdavFields()
             self.loadConnectionsTable()
 
@@ -579,7 +602,7 @@ class NetdriveConnector ( QWidget ):
         else:
             return True
             
-    def addAutoMount(self, mountpoint):
+    def addAutoMount(self, mountpoint, fs_type):
         
         mountpointNoSlashes = str(mountpoint).replace("/","_")
         
@@ -597,7 +620,7 @@ X-DBUS-StartupType=unique
 X-KDE-SubstituteUID=false
 X-KDE-Username=
 """
-        fileContents = str(fileContents + "Exec=mount " + mountpoint)
+        fileContents = str(fileContents + "Exec=netdrive-connector_automountd " + mountpoint + " " + fs_type)
         shellCommand = str("if [ ! -d " + self.homeFolder + "/.config/autostart ]; then mkdir " + self.homeFolder + "/.config/autostart ; fi ; echo '" + fileContents + "' > " + self.homeFolder + "/.config/autostart/netdrive_connector" + mountpointNoSlashes + ".desktop" )
         if subprocess.call(shellCommand,shell=True) != 0:
             warningMessage = QtGui.QMessageBox(self)
@@ -607,17 +630,21 @@ X-KDE-Username=
             warningMessage.show()
             return False
 
-        fileContents=\
-"""
-#!/bin/bash
-
-"""
-        fileContents = str(fileContents + "umount " + mountpoint)
-        shellCommand = str("if [ ! -d " + self.homeFolder + "/.kde/shutdown ]; then mkdir " + self.homeFolder + "/.kde/shutdown ; fi ; echo '" + fileContents + "' > " + self.homeFolder + "/.kde/shutdown/netdrive_connector" + mountpointNoSlashes + ".sh; chmod +x " + self.homeFolder + "/.kde/shutdown/netdrive_connector" + mountpointNoSlashes + ".sh" )
-        if subprocess.call(shellCommand,shell=True) != 0:
-            warningMessage = QtGui.QMessageBox(self)
-            warningMessage.setWindowTitle("Netdrive Connector - Error")
-            warningMessage.setText("An error occured whilst creating the auto-shutdown file in " + self.homeFolder + "/.kde/shutdown .")
-            warningMessage.setIcon(QtGui.QMessageBox.Warning)
-            warningMessage.show()
-            return False
+# 
+#         fileContents=\
+# """
+# #!/bin/bash
+# 
+# """
+#         if fs_type == "fuse.sshfs":
+#             fileContents = str(fileContents + "fusermount -u " + mountpoint)
+#         elif fs_type == "davfs":
+#             fileContents = str(fileContents + "umount " + mountpoint)
+#         shellCommand = str("if [ ! -d " + self.homeFolder + "/.kde/shutdown ]; then mkdir " + self.homeFolder + "/.kde/shutdown ; fi ; echo '" + fileContents + "' > " + self.homeFolder + "/.kde/shutdown/netdrive_connector" + mountpointNoSlashes + ".sh; chmod +x " + self.homeFolder + "/.kde/shutdown/netdrive_connector" + mountpointNoSlashes + ".sh" )
+#         if subprocess.call(shellCommand,shell=True) != 0:
+#             warningMessage = QtGui.QMessageBox(self)
+#             warningMessage.setWindowTitle("Netdrive Connector - Error")
+#             warningMessage.setText("An error occured whilst creating the auto-shutdown file in " + self.homeFolder + "/.kde/shutdown .")
+#             warningMessage.setIcon(QtGui.QMessageBox.Warning)
+#             warningMessage.show()
+#             return False

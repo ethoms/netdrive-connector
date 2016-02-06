@@ -16,6 +16,22 @@ It makes it quick and easy to get one of these shared folders up and running
 without having to know how to set them up manually.
 
 
+News
+~~~~
+
+**Version 1.3 beta 1 is out.**
+
+The changes are as follows:
+
+- Check for missing davfs2 group membership and warn user if so.
+- Use *fusermount -u* instead of *umount* for sshfs unmount. On some
+  distros, unmount of a sshfs filesystem, by a normal user, will fail.
+- Big improvement to autoimatic mount and unmount at login/logout. 
+  This is no longer KDE centric and should work on any DE/WM that uses 
+  ~/.config/autostart/*.desktop to start applications at login. 
+  So far it's only tested on Slackware.
+
+
 Pros
 ~~~~
 
@@ -34,8 +50,6 @@ Cons
 Current Limitations
 ~~~~~~~~~~~~~~~~~~~
 
-- The auto unmount at logout is KDE centric (uses ~/.kde/shutdown). Please let me 
-  know if there is a logout script for other DE's / WM's.
 - No UI localization support (English only).
 - Only available for Linux. Hopefully FreeBSD to follow soon (sshfs only).
 - Makes some assumptions about the system configuration.
@@ -183,7 +197,7 @@ Dependencies
 - **sshfs** (*sshfs-fuse*) v2.4 or above recommended.
 - **davfs2** v1.4.6 or above recommended.
 - **openssh-client**.
-- awk, grep, ls, cut, chown, cat, chmod, sed, uname, who.
+- awk, grep, ls, cut, chown, cat, chmod, sed, uname, who, groups.
 
 *Note: Either davfs2 or sshfs are not required if that connection type is unused.*
 

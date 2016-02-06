@@ -9,7 +9,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='netdrive-connector',
-    version='1.2',
+    version='1.3b1',
     license='BSD License',
     description='GUI tool to setup mountable SFTP and WebDAV connections on Linux/UNIX systems.',
     long_description=README,
@@ -37,7 +37,7 @@ setup(
         ('share/pixmaps',['data/netdrive-connector.png']),
         ('share/applications',['data/netdrive-connector.desktop']),
     ],
-    scripts=['bin/netdrive-connector_run-as-root', 'bin/add-sftp-connector', 'bin/add-webdav-connector', 'bin/remove-sftp-connector', 'bin/remove-webdav-connector'],
+    scripts=['bin/netdrive-connector_run-as-root', 'bin/netdrive-connector_automountd', 'bin/add-sftp-connector', 'bin/add-webdav-connector', 'bin/remove-sftp-connector', 'bin/remove-webdav-connector'],
     entry_points={
         'console_scripts': [ 'netdrive-connector = netdriveconnector.main:main',],
     },
