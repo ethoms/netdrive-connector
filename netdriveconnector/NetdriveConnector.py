@@ -378,10 +378,6 @@ Consider adding this user account to the davfs2 group. Consult your OS/distribut
         if subprocess.call(shellCommand,shell=True) != 0:
             print "WARNING: problem whilst removing autostart file."
 
-        shellCommand = str("rm " + self.homeFolder + "/.kde/shutdown/netdrive_connector" + mountpointNoSlashes + ".sh" )
-        if subprocess.call(shellCommand,shell=True) != 0:
-            print "WARNING: problem whilst removing auto-shutdown file."
-
         self.loadConnectionsTable()
 
     def refreshBtnClicked(self):
@@ -630,21 +626,3 @@ X-KDE-Username=
             warningMessage.show()
             return False
 
-# 
-#         fileContents=\
-# """
-# #!/bin/bash
-# 
-# """
-#         if fs_type == "fuse.sshfs":
-#             fileContents = str(fileContents + "fusermount -u " + mountpoint)
-#         elif fs_type == "davfs":
-#             fileContents = str(fileContents + "umount " + mountpoint)
-#         shellCommand = str("if [ ! -d " + self.homeFolder + "/.kde/shutdown ]; then mkdir " + self.homeFolder + "/.kde/shutdown ; fi ; echo '" + fileContents + "' > " + self.homeFolder + "/.kde/shutdown/netdrive_connector" + mountpointNoSlashes + ".sh; chmod +x " + self.homeFolder + "/.kde/shutdown/netdrive_connector" + mountpointNoSlashes + ".sh" )
-#         if subprocess.call(shellCommand,shell=True) != 0:
-#             warningMessage = QtGui.QMessageBox(self)
-#             warningMessage.setWindowTitle("Netdrive Connector - Error")
-#             warningMessage.setText("An error occured whilst creating the auto-shutdown file in " + self.homeFolder + "/.kde/shutdown .")
-#             warningMessage.setIcon(QtGui.QMessageBox.Warning)
-#             warningMessage.show()
-#             return False
