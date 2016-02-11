@@ -9,7 +9,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='netdrive-connector',
-    version='1.3b1',
+    version='1.3rc1',
     license='BSD License',
     description='GUI tool to setup mountable SFTP and WebDAV connections on Linux/UNIX systems.',
     long_description=README,

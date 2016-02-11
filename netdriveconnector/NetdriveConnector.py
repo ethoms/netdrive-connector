@@ -611,10 +611,6 @@ StartupNotify=false
 Terminal=false
 TerminalOptions=
 Type=Application
-X-DBUS-ServiceName=
-X-DBUS-StartupType=unique
-X-KDE-SubstituteUID=false
-X-KDE-Username=
 """
         fileContents = str(fileContents + "Exec=netdrive-connector_automountd " + mountpoint + " " + fs_type)
         shellCommand = str("if [ ! -d " + self.homeFolder + "/.config/autostart ]; then mkdir " + self.homeFolder + "/.config/autostart ; fi ; echo '" + fileContents + "' > " + self.homeFolder + "/.config/autostart/netdrive_connector" + mountpointNoSlashes + ".desktop" )

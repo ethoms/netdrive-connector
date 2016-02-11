@@ -19,7 +19,7 @@ without having to know how to set them up manually.
 News
 ~~~~
 
-**Version 1.3 beta 1 is out.**
+**Version 1.3 release candidate 1 is out.**
 
 The changes are as follows:
 
