@@ -182,8 +182,7 @@ Packaging Notes
 - At some point in the operation of adding/removing connections, a temporary 
   script is placed in /tmp and given execute permission. After use it is deleted. 
   A regular user will need permissions to do this.
-- *WARNING: The webdav connection script 'add-webdav-connector' will turn the setuid 
-  bit on /usr/bin/mount.davfs*.
+- The setuid bit on /usr/bin/mount.davfs* must be set in order for a user to mount davfs2 filesystems.
 
 
 Dependencies
