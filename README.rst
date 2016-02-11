@@ -28,7 +28,7 @@ The changes are as follows:
   distros, unmount of a sshfs filesystem, by a normal user, will fail.
 - Big improvement to automatic mount and unmount at login/logout. 
   This is no longer KDE centric and should work on any DE/WM that uses 
-  ~/.config/autostart/*.desktop to start applications at login. 
+  \~/.config/autostart/\*.desktop to start applications at login. 
   So far it's only tested on Slackware.
 
 
@@ -208,3 +208,4 @@ Screenshots
 **netdrive-connector Main Window**
 
 .. image:: https://github.com/ethoms/netdrive-connector/blob/master/screenshots/netdrive-connector1.png
+
