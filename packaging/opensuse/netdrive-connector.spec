@@ -15,16 +15,21 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 
 
-Name:           python-netdrive-connector
-Version:        1.2
+Name:           netdrive-connector
+Version:        1.3rc3
 Release:        0
-License:        
+License:        BSD-2-Clause
 Summary:        GUI tool to setup mountable SFTP and WebDAV connections on Linux/UNIX systems
 Url:            http://github.com/ethoms/netdrive-connector/
 Group:          Development/Languages/Python
 Source:         https://pypi.python.org/packages/source/n/netdrive-connector/netdrive-connector-%{version}.tar.gz
 BuildRequires:  python-devel
 BuildRequires:  python-setuptools
+Requires:       python-qt4
+Requires:       openssh-askpass
+Requires:       expect
+Requires:       sshfs
+Requires:       davfs2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{?suse_version} && 0%{?suse_version} <= 1110
 %{!?python_sitelib: %global python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
@@ -51,6 +56,16 @@ python setup.py build
 python setup.py install --prefix=%{_prefix} --root=%{buildroot}
 
 %files
+/usr/bin/add-sftp-connector
+/usr/bin/add-webdav-connector
+/usr/bin/netdrive-connector
+/usr/bin/netdrive-connector_automountd
+/usr/bin/netdrive-connector_run-as-root
+/usr/bin/remove-sftp-connector
+/usr/bin/remove-webdav-connector
+/usr/share/applications/netdrive-connector.desktop
+/usr/share/pixmaps/netdrive-connector.png
+
 %defattr(-,root,root,-)
 %{python_sitelib}/*
 

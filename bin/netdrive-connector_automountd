@@ -62,7 +62,7 @@ then
       fi
     fi
 
-    # Logout detection mathod 3: test for Parent PID dying
+    # Logout detection method 3: test for Parent PID dying
     # TODO: this is Linux specific, need BSD too
     ps -ef | awk '{print $2}' | grep ${PARENT_PID}
     if [ $? != 0 ]
