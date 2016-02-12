@@ -36,7 +36,7 @@ def main():
 
     # create widget
     w = NetdriveConnector()
-    w.setWindowTitle( 'Netdrive Connector v1.3rc2' )
+    w.setWindowTitle( 'Netdrive Connector v1.3rc3' )
     w.resize(700,600)
     w.setWindowIcon(QIcon('/usr/share/pixmaps/netdrive-connector.png'))
     w.show()

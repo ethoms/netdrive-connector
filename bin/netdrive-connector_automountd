@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 MOUNTPOINT=$1
 FS_TYPE=$2
