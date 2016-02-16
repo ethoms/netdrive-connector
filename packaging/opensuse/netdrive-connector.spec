@@ -70,4 +70,6 @@ python setup.py install --prefix=%{_prefix} --root=%{buildroot}
 %defattr(-,root,root,-)
 %{python_sitelib}/*
 
-%changelog
+%doc README.rst CHANGELOG LICENSE
+
+%changelog CHANGELOG
