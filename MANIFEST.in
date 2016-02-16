@@ -2,5 +2,4 @@ include CHANGELOG
 include LICENSE
 include README.rst
 recursive-include data *
-recursive-include debian *
 recursive-include netdriveconnector *
