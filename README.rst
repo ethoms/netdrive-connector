@@ -19,7 +19,7 @@ without having to know how to set them up manually.
 News
 ~~~~
 
-**Version 1.3 release candidate 3 is out.**
+**Version 1.3 released.**
 
 The changes are as follows:
 
@@ -28,8 +28,12 @@ The changes are as follows:
   distros, unmount of a sshfs filesystem, by a normal user, will fail.
 - Big improvement to automatic mount and unmount at login/logout. 
   This is no longer KDE centric and should work on any DE/WM that uses 
-  \~/.config/autostart/\*.desktop to start applications at login. 
-  So far it's only tested on Slackware.
+  ``~/.config/autostart/*.desktop`` to start applications at login. 
+  So far it's tested on the following distros: Slackware, openSUSE and
+  Debian. And the following DE's: KDE4, KDE5, Gnome shell, MATE, XFCE,
+  LXDE and LXQt.
+- Fix bug in adding SFTP connection without password-less key. Now it
+  no longer specifies the ssh key in the mount options.
 
 
 Pros

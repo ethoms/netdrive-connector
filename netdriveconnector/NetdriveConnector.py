@@ -246,7 +246,7 @@ Consider adding this user account to the davfs2 group. Consult your OS/distribut
                 successMessage.show()
                 
             if not isWebdavPasswordSaved:
-                #TODO: check for GNU/LInux or *BSD and use specific sed in-place command
+                # TODO: check for GNU/LInux or *BSD and use specific sed in-place command
                 shellCommand =  str('sed -i "\|^' + filesystem + ' .*|d" "' + self.homeFolder + '/.davfs2/secrets"')
                 if subprocess.call(shellCommand,shell=True) != 0:
                     warningMessage = QtGui.QMessageBox(self)
