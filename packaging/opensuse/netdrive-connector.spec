@@ -26,6 +26,7 @@ Source:         https://pypi.python.org/packages/source/n/netdrive-connector/net
 BuildRequires:  python-devel
 BuildRequires:  python-setuptools
 Requires:       python-qt4
+Requires:       openssh
 Requires:       openssh-askpass
 Requires:       expect
 Requires:       sshfs
