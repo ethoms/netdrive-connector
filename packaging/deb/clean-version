@@ -1,0 +1,33 @@
+#!/bin/sh
+
+PROJECT_NAME=netdrive-connector
+SCRIPT=`basename $0`
+SCRIPT_PATH=`readlink -f $0`
+SCRIPT_DIR=`dirname ${SCRIPT_PATH}`
+CWD=`pwd`
+
+if [ $# != 1 ]
+then
+  echo ""
+  echo "Usage:   ./${SCRIPT} [version]"
+  echo "Example: ./${SCRIPT} 1.2.3"
+  echo ""
+  exit 1
+fi
+
+if [ "${CWD}" != "${SCRIPT_DIR}" ]
+then
+  echo ""
+  echo "This script must be run from it's residing directory."
+  echo ""
+  exit 1
+fi
+
+
+VERSION=$1
+
+rm ${PROJECT_NAME}_${VERSION}.orig.tar.gz
+
+rm ${PROJECT_NAME}_${VERSION}-*_all.deb
+
+rm -rf ${PROJECT_NAME}-${VERSION}
