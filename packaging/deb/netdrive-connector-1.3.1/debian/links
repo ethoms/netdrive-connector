@@ -1,0 +1,7 @@
+/usr/share/netdrive-connector/netdrive-connector /usr/bin/netdrive-connector
+/usr/share/netdrive-connector/netdrive-connector_run-as-root /usr/bin/netdrive-connector_run-as-root
+/usr/share/netdrive-connector/netdrive-connector_automountd /usr/bin/netdrive-connector_automountd
+/usr/share/netdrive-connector/add-sftp-connector /usr/bin/add-sftp-connector
+/usr/share/netdrive-connector/add-webdav-connector /usr/bin/add-webdav-connector
+/usr/share/netdrive-connector/remove-sftp-connector /usr/bin/remove-sftp-connector
+/usr/share/netdrive-connector/remove-webdav-connector /usr/bin/remove-webdav-connector

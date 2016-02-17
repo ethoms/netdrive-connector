@@ -1,0 +1,29 @@
+Package: netdrive-connector
+Version: 1.3.1-1
+Architecture: all
+Maintainer: Euan Thoms <euan@potensol.com>
+Installed-Size: 169
+Depends: python-qt4, davfs2, sshfs, openssh-client, expect, ssh-askpass
+Section: python
+Priority: optional
+Description: GUI tool to setup mountable SFTP and WebDAV connections on L
+ netdrive-connector
+ ==================
+ .
+ **Utility to setup mountable SFTP and WebDAV connections on Linux/UNIX systems.**
+ .
+ .
+ Introduction
+ ~~~~~~~~~~~~
+ .
+ netdrive-connector is a simple PyQt4 wrapper for the existing and standardized
+ way to get SFTP and WebDAV shared folders (remote filesystems) mounted into your
+ local filesystem. Usually a folder inside your home folder. With the optional
+ addition of auto-mounting at desktop login and passwordless login.
+ .
+ It makes it quick and easy to get one of these shared folders up and running
+ without having to know how to set them up manually.
+ .
+ .
+ News
+ ~~~~
