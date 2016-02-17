@@ -26,8 +26,10 @@ fi
 
 VERSION=$1
 
-rm ${PROJECT_NAME}_${VERSION}.orig.tar.gz
+# rm ${PROJECT_NAME}_${VERSION}.orig.tar.gz
 
 rm ${PROJECT_NAME}_${VERSION}-*_all.deb
 
 rm -rf ${PROJECT_NAME}-${VERSION}
+
+rm -rf ${PROJECT_NAME}-${VERSION}.orig

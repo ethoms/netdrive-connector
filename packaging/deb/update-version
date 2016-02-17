@@ -1,16 +1,17 @@
 #!/bin/sh
 
 PROJECT_NAME=netdrive-connector
+MAINTAINER="Euan Thoms <euan@potensol.com>"
 SCRIPT=`basename $0`
 SCRIPT_PATH=`readlink -f $0`
 SCRIPT_DIR=`dirname ${SCRIPT_PATH}`
 CWD=`pwd`
 
-if [ $# != 1 ]
+if [ $# != 2 ]
 then
   echo ""
-  echo "Usage:   ./${SCRIPT} [version]"
-  echo "Example: ./${SCRIPT} 1.2.3"
+  echo "Usage:   ./${SCRIPT} [old_version] [new_version]"
+  echo "Example: ./${SCRIPT} 1.2.3 1.2.4"
   echo ""
   exit 1
 fi
@@ -24,6 +25,20 @@ then
 fi
 
 
-VERSION=$1
+OLD_VERSION=$1
+NEW_VERSION=$2
 
-uupdate ../../packages/dist/${PROJECT_NAME}-${VERSION}.tar.gz
+cd ${PROJECT_NAME}-${OLD_VERSION} 
+
+uupdate ../../../packages/dist/${PROJECT_NAME}-${NEW_VERSION}.tar.gz
+
+cd -
+
+cd ${PROJECT_NAME}-${NEW_VERSION}
+
+sed -i debian/changelog -e "s/UNRELEASED/unstable/"
+
+# Change first (latest) occurence of maintainer id
+sed -i debian/changelog -e "0,/-- .*<.*@.*>/{s/-- .*<.*@.*>/-- ${MAINTAINER}/}"
+
+cd -
