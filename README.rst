@@ -19,7 +19,7 @@ without having to know how to set them up manually.
 News
 ~~~~
 
-**Version 1.3 released.**
+**Version 1.3.1 released.**
 
 The changes are as follows:
 
