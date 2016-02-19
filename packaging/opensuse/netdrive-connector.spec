@@ -22,7 +22,7 @@ License:        BSD-2-Clause
 Summary:        GUI tool to setup mountable SFTP and WebDAV connections on Linux/UNIX systems
 Url:            http://github.com/ethoms/netdrive-connector/
 Group:          Development/Languages/Python
-Source:         https://pypi.python.org/packages/source/n/netdrive-connector/netdrive-connector-%{version}.tar.gz
+Source:         netdrive-connector_%{version}.orig.tar.gz
 BuildRequires:  python-devel
 BuildRequires:  python-setuptools
 Requires:       python-qt4

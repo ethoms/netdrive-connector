@@ -8,7 +8,7 @@ Architecture: all
 Version: 1.3.1-1
 Maintainer: Euan Thoms <euan@potensol.com>
 Standards-Version: 3.9.1
-Build-Depends: python-setuptools (>= 0.6b3), python (>= 2.6.6-3), debhelper (>= 9)
+Build-Depends: python-setuptools (>= 0.6b3), python-all (>= 2.6.6-3), debhelper (>= 9), dh-python
 Package-List:
  netdrive-connector deb python optional arch=all
 Checksums-Sha1:
