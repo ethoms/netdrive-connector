@@ -1,8 +1,0 @@
-Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: netdrive-connector
-Source: https://github.com/ethoms/netdrive-connector/
-
-Files: *
-Copyright: 2015 Euan Thoms
-License: BSD-2-clause
- [LICENSE TEXT]
