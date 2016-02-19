@@ -1,10 +1,4 @@
-netdrive-connector (1.3.1-1) unstable; urgency=medium
-
-  * New upstream release
-
- -- Euan Thoms <euan@potensol.com>  Thu, 18 Feb 2016 06:33:16 +0800
-
-netdrive-connector (1.3-1) unstable; urgency=low
+netdrive-connector (1.3.1-1) unstable; urgency=low
 
   * source package automatically created by stdeb 0.8.2
 

@@ -8,33 +8,33 @@ Architecture: all
 Version: 1.3.1-1
 Maintainer: Euan Thoms <euan@potensol.com>
 Standards-Version: 3.9.1
-Build-Depends: python-setuptools (>= 0.6b3), python-all (>= 2.6.6-3), debhelper (>= 9), dh-python
+Build-Depends: python-setuptools (>= 0.6b3), python (>= 2.6.6-3), debhelper (>= 9)
 Package-List:
  netdrive-connector deb python optional arch=all
 Checksums-Sha1:
  9ccf0c6b9b1f4768e50072dd5f60fd7d79f4c3c0 43462 netdrive-connector_1.3.1.orig.tar.gz
- fca5764373246a9f1911ec0add2bc965e4a8652a 1464 netdrive-connector_1.3.1-1.debian.tar.xz
+ 5db1c0ed09b6269503aa5554fdbcc4053f04f4d4 1416 netdrive-connector_1.3.1-1.debian.tar.xz
 Checksums-Sha256:
  f506b04352d1c4cd7771d2ea0b1e7dc0d9edf28913ea30b422560c0481d37f9f 43462 netdrive-connector_1.3.1.orig.tar.gz
- c801c355bedbe0d468fd19a354fb734df070f0e32bbca40936bfe18903d465f3 1464 netdrive-connector_1.3.1-1.debian.tar.xz
+ 6b89a637b0f46aae5cab4f5278405e449a15e8fe4ce76a0ee3bdb5ce2eb52f6b 1416 netdrive-connector_1.3.1-1.debian.tar.xz
 Files:
  c86c46f492393e3b2c672ea68ebc903a 43462 netdrive-connector_1.3.1.orig.tar.gz
- ec5a4bc277c61a1ae2ce10b3312d829c 1464 netdrive-connector_1.3.1-1.debian.tar.xz
+ a9d5af5371f629eefb49c0e8c2b7a1dc 1416 netdrive-connector_1.3.1-1.debian.tar.xz
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iQIcBAEBCAAGBQJWxPcTAAoJEOqXYB/4Jd/2VlwP/3PBgaYm6+zHBDFSs3tpLE2C
-Od0Xyx+qFzBy/g1+WvEoAgxBJUC5m93dwI1nWP6Am00/ZT8rxvw7XpByeGiv0+tB
-JVJ33Hd9DXb5aGUF7mlgpSxgyQkszPHmj3VexRvPSMkBe8NF2quZsU02QXU3icQe
-bTier1areQ1wainJVZXH6s+l4wNJGKKx0ECQAmUN10JfZ9TnSGUZkvczRan+HM13
-APoNBbctH3k8m58yXVNv5uW75cg2guQsA4iiW2UcPz3r3eLmTjTelz2CqzJdF1pR
-vWmnKRpzlUfb5PIhTL/GC62ozUWs4K6I+7mmT4qdxBsX3sQB8QgnssGuQ8dIbjCl
-w9XnQi2kjV4FhiEXmqVtwfVu3SJcJoVkQUO9ZvqkbjdOi119sxEhLYGaRJ7ezAY7
-CKHnhe7U3wkQX/PeMqlXoU8DmndP0Zfrn742DXisxSnjVCsk8Y2t55MdLs3unJPr
-OUenYI0UA6TwHfMLcQw0XkfsVpBv9WvXqWhLSO9jioHgbMqfDfiLMtr08O7DzN+o
-HCZQ+juypUHxMp58DKp2VYZ1jULD1ZSwJueVyObFFDZEnAN2Z44WxCFobc//AQID
-0qkcq34O9LiW66B2zqP4sxtZcYOQi0MF2qnBREojPLkEKdK79eswk6ovRVJe0xC9
-MdhLW6brCEdzEyUbXtGz
-=RdDM
+iQIcBAEBCAAGBQJWx0WeAAoJEOqXYB/4Jd/2H/4QAKy+pNiOF+9yskdTOF75mPVK
+OrGPtuSEj8KnWms5gkelpFxbThoCItpJNhVgRWyzlYCG5FGVmV4RP1Km22MC0zZ9
+GAVyr98avQPZxRumJEZtqJjYlPZ5hdUj0NYDd0Ik3Gre/MtLUDydOHsn7gKutjKB
+lisKqyoEbsioHNzlw7d7Riv1bacyihi4vNZ98UgSHHL45VeRRbkonavpW4OtWBEP
+GQ9fGGZeTK4zIMUX6g+HuGyPxWs1r6mbc/OS46fkY03i8pDMLKCPeoJkDp93ocrk
+8/j6tCXXle4kb12MczI4WKWakQAU8MVuelXmS4xPD0shEGknEMRMlqiZum6lxYNZ
+zkxLpET34t9mbp5qaOiEqXiyy1ZCHQUhuzZwViia7vWwy4qp6kU4annfHjXf4uFV
+al6XfkQ5JasCQInZuJDAd5uhstsETQFUVmXv0fMBGLwZyTzgZZjb6917LRhxgmsz
+dZPpWuhew+ipdlLR5InfY1T/a/d6s3ONRDFFava1g/6vVuwUMmCl/b1GI4IxY9yH
+0SWJ9we/UDyQJxiuwcxP0zwp2JUwEIEZpy3fE6R5UwC7tt55bDtsNZA2KSjwYrsn
+QwQN2sE1EP0fIzmexMH6q0CDmp2Kd8WFnsRHMDp1No9CpeGV8zT0pXqCU+TbMQwh
+Vb+k8x8bw1yVC0JqU63e
+=JjEx
 -----END PGP SIGNATURE-----

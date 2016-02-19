@@ -4,7 +4,7 @@
 # Tue, 16 Feb 2016 14:22:06 +0800
 export PYBUILD_NAME=netdrive-connector
 %:
-	dh $@ --with python2 --buildsystem=pybuild
+	dh $@ --with python2
 
 override_dh_auto_install:
 	python setup.py install --root=debian/netdrive-connector --install-layout=deb --install-lib=/usr/share/netdrive-connector --install-scripts=/usr/share/netdrive-connector
