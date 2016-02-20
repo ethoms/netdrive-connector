@@ -18,35 +18,35 @@ Changes:
  .
    * source package automatically created by stdeb 0.8.2
 Checksums-Sha1:
- 682c6b901b1335ecfd66bf46953d2a9942acdc98 1784 netdrive-connector_1.3.1-1.dsc
+ 1d14c9e9fc6b4b6c9d28e2fa36f5151c1b7756cc 1784 netdrive-connector_1.3.1-1.dsc
  9ccf0c6b9b1f4768e50072dd5f60fd7d79f4c3c0 43462 netdrive-connector_1.3.1.orig.tar.gz
- a6d475ebfaee4537089259bf84fa05c554cba47a 2100 netdrive-connector_1.3.1-1.debian.tar.xz
- 37c5afa8eefd1f6f51273c0e05988a9a522cc1f8 37770 netdrive-connector_1.3.1-1_all.deb
+ 90e17768c2617e063bfd8477cc6819fd7c3dbaa4 2084 netdrive-connector_1.3.1-1.debian.tar.xz
+ 9bee7985e421b06511fff899ac9a492327714132 37758 netdrive-connector_1.3.1-1_all.deb
 Checksums-Sha256:
- 86b4db4c47c00234be83d9f34dea454dbf4e204cdf4b61cd14651e09e468b336 1784 netdrive-connector_1.3.1-1.dsc
+ 7227e18c136fad311e3430ab2da09231c31a29136510679466720f8fa55399d7 1784 netdrive-connector_1.3.1-1.dsc
  f506b04352d1c4cd7771d2ea0b1e7dc0d9edf28913ea30b422560c0481d37f9f 43462 netdrive-connector_1.3.1.orig.tar.gz
- 1de6aaf9f56abe43f91cd50f569a7ece93844e1c30b196fca4340862f66eab5a 2100 netdrive-connector_1.3.1-1.debian.tar.xz
- 8e78b1954d9fc87e568b92d5bdbf0f971ce888d6c77d41730a513fc5446abb27 37770 netdrive-connector_1.3.1-1_all.deb
+ 88bfd472e55e9b743c64fcddfe14133f5a0f25c6923cbe80bb814b6dac4d85e0 2084 netdrive-connector_1.3.1-1.debian.tar.xz
+ 991af90b3dbd5576577d1a1eee915d7759d5664173dceb0556b0cbde51973f12 37758 netdrive-connector_1.3.1-1_all.deb
 Files:
- 9622f7e22ac45cebfd065aab08f4dcda 1784 python optional netdrive-connector_1.3.1-1.dsc
+ 7e81dc3164608070ec2dfc42c43bbd5a 1784 python optional netdrive-connector_1.3.1-1.dsc
  c86c46f492393e3b2c672ea68ebc903a 43462 python optional netdrive-connector_1.3.1.orig.tar.gz
- 84be737d60bd7d33a4709139dda5ea51 2100 python optional netdrive-connector_1.3.1-1.debian.tar.xz
- 62cc5c8cd24d410a82a90876e3a5de7f 37770 python optional netdrive-connector_1.3.1-1_all.deb
+ 094d6f4cf9ef32a872554101dfc949e0 2084 python optional netdrive-connector_1.3.1-1.debian.tar.xz
+ b6cc22b1b11e97e2769ceec3752ca494 37758 python optional netdrive-connector_1.3.1-1_all.deb
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iQIcBAEBCAAGBQJWyKZlAAoJEOqXYB/4Jd/2VxAP/jcBaxo61BdFiGFj9EYsgwR6
-U4a4h1vh96MnFyFTsQHuNYce2mtcL8bBuM074H84pHS+sx9yunQmRB70Z6CulQkx
-DTc6Ea5pFt39Dc0gBZAN3NQ405dFstBJzPbYeD/5NND3tKXH0cPlDru93UFnqRKl
-+EeeWdqMdrJURvi0JkHO2DXxYVHSnsgfaWFJqBX1rUfcAYHZ3B9TC0oUb6AB6eTr
-pklnGyYQz7qRvXlNH6mmwryUyH93sbDp3PeaFJQIFBPDrcIuKaICjxIanjZ8zMU8
-gEJS63tMdQBkVLB8wr5jQd8pKAZdgB9ubttheWnjroUlfT1JiQu4dabBDN6NDgWC
-FSQ/JLGwu1ib8lOwfH2i+lYdcrG6xrFs8psxfI9ZoS29yCP2EWwNDrWEcY2oMIwJ
-W7RlX37iMxnOzVzbRtX/ms5YFucVu9gAejbiFO2DYedWsriAo6TGOfnIXC5wWiRw
-ZPgmQ2yJUPrIV3NjJPjgj6WpzmcxTZrARqA8ZtPEGSW/HV1Ug42sR2/UBuej4T74
-Cfn3A8Ff+hBYOw5lNcKEZuKZfVAf4jG3+xU5abK/Memmd0QJHEZQDWCAFL7lH2ST
-D7dvnfvYmln/5emgPS91E5ljsSKm78N9KvpijEG959cGggX2L9A2XdQLgE0nLIZ2
-+CV7OOiyZTS8oNhUD5s8
-=5OrF
+iQIcBAEBCAAGBQJWyMtrAAoJEOqXYB/4Jd/2T3kP/ieuDkk9KKDgKZDCgriHfB47
+2huzCoO9YZ2vQbCAx3tPwzT/+4ypdSwT7n7QOiPFlfsUMZzZ+P3F1qN0FHBADutk
+Fegmhn8ZvYEhjVSLqx+igNZIEPW7U4rNCmOlVLK7DO/vAX8n2Xo99QAV+KE5R4V6
+Zv2GhcPcJSf1SOYX7JlpILX7nS/Jy/XYTwdoEvfeofXZpOL0H8rmAFLzdunJx+Jv
+YZUK0tCRm1IEO9JNf+hKuT93MZjTXGnHtce135o89iUKv7boxxZbF5jtukLTeiNR
+l6Xm03jv/GApzO0q5+xmv8IDHYv4XepIBcLxVeXQsG+oCcA91efgiwX06YudGJoO
+VutJY83byVM9fXIzy8IuboDfesKD7rTqBi5EpJ1xj4W71oK6NAq4pUiwCxMaeL73
+DztWLvYeN6E2RZSGbGFPgqsN+2rc5H3Wia9J2bdaaZ1L5dRNHUUUtFHRSeu1q3oQ
+FeIqbxRiCF2DDzB5pFLGs23IM6l5YZ2ae5RzTNie55ISsVgq6mtj2xW3As6BoSkc
+Frkzaxj/rM59Oxk900s1z7USEBf14zYgwB9U3kjZgw8mYiIXHKLev0aDltSZJli+
+M/9D3kb1Nl3vOtnshaVTY3OTEKoM5aw6WKD8Fyr4g6BdIB+N86hhjOtEWPNgSTSu
+6l+AgMpS6u9PS41doBdf
+=cAYI
 -----END PGP SIGNATURE-----

@@ -3,7 +3,7 @@ Version: 1.3.1-1
 Architecture: all
 Maintainer: Euan Thoms <euan@potensol.com>
 Installed-Size: 169
-Depends: python-qt4, davfs2, sshfs, openssh-client, ssh-askpass, expect (>= 5.45-6) | expect-dev
+Depends: python-qt4, davfs2, sshfs, openssh-client, ssh-askpass, expect-dev
 Section: python
 Priority: optional
 Description: GUI tool to setup mountable SFTP and WebDAV connections on L
