@@ -29,9 +29,9 @@ The changes are as follows:
 - Big improvement to automatic mount and unmount at login/logout. 
   This is no longer KDE centric and should work on any DE/WM that uses 
   ``~/.config/autostart/*.desktop`` to start applications at login. 
-  So far it's tested on the following distros: Slackware, openSUSE and
-  Debian. And the following DE's: KDE4, KDE5, Gnome shell, MATE, XFCE,
-  LXDE and LXQt.
+  So far it's tested on the following distros: Slackware, openSUSE,
+  Debian and Ubuntu. And the following DE's: KDE4, KDE5, Gnome shell, MATE, XFCE,
+  LXDE, LXQt and Unity.
 - Fix bug in adding SFTP connection without password-less key. Now it
   no longer specifies the ssh key in the mount options.
 
