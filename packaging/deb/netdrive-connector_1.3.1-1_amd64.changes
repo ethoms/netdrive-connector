@@ -12,41 +12,41 @@ Urgency: low
 Maintainer: Euan Thoms <euan@potensol.com>
 Changed-By: Euan Thoms <euan@potensol.com>
 Description:
- netdrive-connector - GUI tool to setup mountable SFTP and WebDAV connections on L
+ netdrive-connector - GUI tool to setup mountable SFTP and WebDAV connections.
 Changes:
  netdrive-connector (1.3.1-1) unstable; urgency=low
  .
    * source package automatically created by stdeb 0.8.2
 Checksums-Sha1:
- 1d14c9e9fc6b4b6c9d28e2fa36f5151c1b7756cc 1784 netdrive-connector_1.3.1-1.dsc
+ 2d1346dbeec2539075448db579c33994ee4bb0e5 1784 netdrive-connector_1.3.1-1.dsc
  9ccf0c6b9b1f4768e50072dd5f60fd7d79f4c3c0 43462 netdrive-connector_1.3.1.orig.tar.gz
- 90e17768c2617e063bfd8477cc6819fd7c3dbaa4 2084 netdrive-connector_1.3.1-1.debian.tar.xz
- 9bee7985e421b06511fff899ac9a492327714132 37758 netdrive-connector_1.3.1-1_all.deb
+ 006f4ffcca521c8d3c8a3b6b1ac635994411df0e 2096 netdrive-connector_1.3.1-1.debian.tar.xz
+ 80315d2ebb2972f701bda5ae7bb07c6aacaaa2a7 37782 netdrive-connector_1.3.1-1_all.deb
 Checksums-Sha256:
- 7227e18c136fad311e3430ab2da09231c31a29136510679466720f8fa55399d7 1784 netdrive-connector_1.3.1-1.dsc
+ f2498acc22930b3b502fcd7d716e67d204b9d323b2b9289f028ebfd95df5dd0d 1784 netdrive-connector_1.3.1-1.dsc
  f506b04352d1c4cd7771d2ea0b1e7dc0d9edf28913ea30b422560c0481d37f9f 43462 netdrive-connector_1.3.1.orig.tar.gz
- 88bfd472e55e9b743c64fcddfe14133f5a0f25c6923cbe80bb814b6dac4d85e0 2084 netdrive-connector_1.3.1-1.debian.tar.xz
- 991af90b3dbd5576577d1a1eee915d7759d5664173dceb0556b0cbde51973f12 37758 netdrive-connector_1.3.1-1_all.deb
+ 4ab647dcdc4e030f48bc305c507961535cb33fca351ddeacbedc5b526137941b 2096 netdrive-connector_1.3.1-1.debian.tar.xz
+ 1f9089712ab4c30078db1470cdf9eea9e69df1695e2cd384e22c889ed471a863 37782 netdrive-connector_1.3.1-1_all.deb
 Files:
- 7e81dc3164608070ec2dfc42c43bbd5a 1784 python optional netdrive-connector_1.3.1-1.dsc
+ 201ae382e0f028db52e5182af7f7c284 1784 python optional netdrive-connector_1.3.1-1.dsc
  c86c46f492393e3b2c672ea68ebc903a 43462 python optional netdrive-connector_1.3.1.orig.tar.gz
- 094d6f4cf9ef32a872554101dfc949e0 2084 python optional netdrive-connector_1.3.1-1.debian.tar.xz
- b6cc22b1b11e97e2769ceec3752ca494 37758 python optional netdrive-connector_1.3.1-1_all.deb
+ f925e4c3542b721065b0693b5f6fd890 2096 python optional netdrive-connector_1.3.1-1.debian.tar.xz
+ 978342ed74bc88743a329a0b1491aa6b 37782 python optional netdrive-connector_1.3.1-1_all.deb
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v2
 
-iQIcBAEBCAAGBQJWyMtrAAoJEOqXYB/4Jd/2T3kP/ieuDkk9KKDgKZDCgriHfB47
-2huzCoO9YZ2vQbCAx3tPwzT/+4ypdSwT7n7QOiPFlfsUMZzZ+P3F1qN0FHBADutk
-Fegmhn8ZvYEhjVSLqx+igNZIEPW7U4rNCmOlVLK7DO/vAX8n2Xo99QAV+KE5R4V6
-Zv2GhcPcJSf1SOYX7JlpILX7nS/Jy/XYTwdoEvfeofXZpOL0H8rmAFLzdunJx+Jv
-YZUK0tCRm1IEO9JNf+hKuT93MZjTXGnHtce135o89iUKv7boxxZbF5jtukLTeiNR
-l6Xm03jv/GApzO0q5+xmv8IDHYv4XepIBcLxVeXQsG+oCcA91efgiwX06YudGJoO
-VutJY83byVM9fXIzy8IuboDfesKD7rTqBi5EpJ1xj4W71oK6NAq4pUiwCxMaeL73
-DztWLvYeN6E2RZSGbGFPgqsN+2rc5H3Wia9J2bdaaZ1L5dRNHUUUtFHRSeu1q3oQ
-FeIqbxRiCF2DDzB5pFLGs23IM6l5YZ2ae5RzTNie55ISsVgq6mtj2xW3As6BoSkc
-Frkzaxj/rM59Oxk900s1z7USEBf14zYgwB9U3kjZgw8mYiIXHKLev0aDltSZJli+
-M/9D3kb1Nl3vOtnshaVTY3OTEKoM5aw6WKD8Fyr4g6BdIB+N86hhjOtEWPNgSTSu
-6l+AgMpS6u9PS41doBdf
-=cAYI
+iQIcBAEBCAAGBQJWyfh2AAoJEOqXYB/4Jd/2hRAQAKzshoztql0EX17+QKFkrjoS
+Q5K/n7G5D8RTV3cu4ybAVyrSvZVGKzwuj4bVMKwleRGsXSY7BtiMjCOtPGanFaSW
+UJHcOc3pggNMxVg4mLqcAapEkEK0KTGOjNIS4dmpT0RTYesnIgaKbeECm0VOUUFd
+zfQ3Pc0bohnbp+8HUKIeVdtgSloXqayhbvTJUOy2kO8sp6okRvZJcQHIHNfSPS56
+aerGEWH9s4Rkx+4Hcy6B8KdejTtI/+DNlxXUiprfQPPGSaETcGASegSYGWMsToBm
+xtU76JUgKppispeCYEuYE4bJ+Rkcl7Hib2RsWHtlMaZo0rSadPmWR2JJCRJmGedE
+2S2NsrvW7gW6Zdn+pClzjQmPajk4/Ihe9ti5kuBhMXZtzo/T64chRSA2h60TSAAG
+xyYShHVNvkNl6nq6+6YSnoiUXwgF13SfsMoEvBXs6ui9YZepqBHrNEkh790P2goY
+L+zWZ/AyehK0kBTa3n1L9pQ/K0y4hc2iTb9kzXYiUZGKlLTRdRqL4cFO4qVluJ3/
+ifsD6YWO7tSjwNtoKVbJx71MQV2w9ebcNtU1FjZqaFrmdhh+v1gnnPBJO8Pjfo1r
+uJB0LrZSRoEG3fvLouMvEStl5QcB6OnMUi+wHMVCpQ4CgwAn5eae0Y92nC6vGJu1
+Q1tWuCOrMWJHXsmptq02
+=BuOs
 -----END PGP SIGNATURE-----

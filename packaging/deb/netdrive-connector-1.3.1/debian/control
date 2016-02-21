@@ -7,8 +7,8 @@ Standards-Version: 3.9.1
 
 Package: netdrive-connector
 Architecture: all
-Depends: python-qt4, davfs2, sshfs, openssh-client, ssh-askpass, expect-dev
-Description: GUI tool to setup mountable SFTP and WebDAV connections on L
+Depends: python-qt4, davfs2, sshfs, openssh-client, ssh-askpass, expect (>= 5.45-6) | expect-dev
+Description: GUI tool to setup mountable SFTP and WebDAV connections.
  netdrive-connector
  ==================
  .
