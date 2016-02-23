@@ -9,7 +9,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='netdrive-connector',
-    version='1.3.1',
+    version='1.3.2',
     license='BSD License',
     description='GUI tool to setup mountable SFTP and WebDAV connections on Linux/UNIX systems.',
     long_description=README,
@@ -43,7 +43,7 @@ setup(
     },
     options = {
         'build_scripts': {
-            'executable': '/usr/bin/env python2.7',
+            'executable': '/usr/bin/python2.7',
         },
     }, 
 )

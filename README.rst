@@ -19,7 +19,7 @@ without having to know how to set them up manually.
 News
 ~~~~
 
-**Version 1.3.1 released.**
+**Version 1.3.2 released.**
 
 The changes are as follows:
 
@@ -65,7 +65,7 @@ Installation Notes
 - Check in your distributions' repository first. If it's too out of date,
   use one of the following methods instead.
 - Package repos for various distros can be found on OpenSUSE Build Service
-  at the following URL: <https://software.opensuse.org/download.html?project=home%3Aethoms&package=netdrive-connector> .
+  here: `<https://software.opensuse.org/download.html?project=home%3Aethoms&package=netdrive-connector>`_.
 - Slackware has a SlackBuild available on SlackBuilds.org.
 - Prebuilt packages are avaibale in the 'packages' directory. Make sure
   dependencies are installed (see below).

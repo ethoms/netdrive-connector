@@ -16,7 +16,7 @@
 
 
 Name:           netdrive-connector
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 License:        BSD-2-Clause
 Summary:        GUI tool to setup mountable SFTP and WebDAV connections on Linux/UNIX systems

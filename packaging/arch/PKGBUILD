@@ -1,12 +1,11 @@
-Maintainer: Euan Thoms <euan@potensol.com>
+# Maintainer: Euan Thoms <euan@potensol.com>
 pkgname=netdrive-connector
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Utility to setup mountable SFTP and WebDAV connections on Linux/UNIX systems."
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://github.com/ethoms/netdrive-connector"
 license=('BSD-2-clause')
-groups=()
 depends=('python2'
          'python2-pyqt4'
          'openssh'
@@ -14,16 +13,10 @@ depends=('python2'
          'sshfs'
          'davfs2'
          'expect')
-makedepends=('python2-setuptools')
-provides=()
-conflicts=()
-replaces=()
-backup=()
+makedepends=()
 options=(!emptydirs)
-install=
-source=(https://pypi.python.org/packages/source/n/netdrive-connector/$pkgname-$pkgver.tar.gz)
-md5sums=(c86c46f492393e3b2c672ea68ebc903a)
-
+source=("https://pypi.python.org/packages/source/n/$pkgname/$pkgname-$pkgver.tar.gz")
+md5sums=('08f02dc3cb07212d1a0c04dae8cb20aa')
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   python2 setup.py install --root="$pkgdir/" --optimize=1
