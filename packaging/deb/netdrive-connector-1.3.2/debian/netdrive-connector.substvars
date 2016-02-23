@@ -1,0 +1,2 @@
+python:Depends=python2.7:any, python:any (>= 2.6.6-7~)
+misc:Depends=

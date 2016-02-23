@@ -1,0 +1,52 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Format: 1.8
+Date: Tue, 23 Feb 2016 23:13:56 +0800
+Source: netdrive-connector
+Binary: netdrive-connector
+Architecture: source all
+Version: 1.3.2-1
+Distribution: unstable
+Urgency: medium
+Maintainer: Euan Thoms <euan@potensol.com>
+Changed-By: Euan Thoms <euan@potensol.com>
+Description:
+ netdrive-connector - GUI tool to setup mountable SFTP and WebDAV connections.
+Changes:
+ netdrive-connector (1.3.2-1) unstable; urgency=medium
+ .
+   * New upstream release
+Checksums-Sha1:
+ 0f52484a26e0387516f4fb91ee127e6041e02fe2 1784 netdrive-connector_1.3.2-1.dsc
+ c33fc065193e8ea25bed24d2866182517eb36b3e 44000 netdrive-connector_1.3.2.orig.tar.gz
+ 9f9f31aa9fa31a6bf9b4e642704a15c38c749ada 2172 netdrive-connector_1.3.2-1.debian.tar.xz
+ b7503c6621a4ed735dc37881fc725a3ea9d28b81 37992 netdrive-connector_1.3.2-1_all.deb
+Checksums-Sha256:
+ a2c0a62c2e6ee0ab8f7b95ff49f834dcd13523bacd76c82822d7bca2de93bc76 1784 netdrive-connector_1.3.2-1.dsc
+ 8d0ae5d77d27cd8b7613fb2ef2410a26f49c8e5ab4d4c8fb32d7c63a14b8848b 44000 netdrive-connector_1.3.2.orig.tar.gz
+ f4dc9372adfe24a989d104d707eec9610a3399826ed6d3c5826030226fdfa26c 2172 netdrive-connector_1.3.2-1.debian.tar.xz
+ 5efb304659b3aebd8116e997c1265911234fa7bff0b465d0d36588b4143dd476 37992 netdrive-connector_1.3.2-1_all.deb
+Files:
+ cbe657bb224ff06af3af315008b99d03 1784 python optional netdrive-connector_1.3.2-1.dsc
+ 08f02dc3cb07212d1a0c04dae8cb20aa 44000 python optional netdrive-connector_1.3.2.orig.tar.gz
+ 33c74a4a512e13af527f9b987d22d5a2 2172 python optional netdrive-connector_1.3.2-1.debian.tar.xz
+ 6392bd51e34082363a4ef5b876ad19b9 37992 python optional netdrive-connector_1.3.2-1_all.deb
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQIcBAEBCAAGBQJWzHhlAAoJEOqXYB/4Jd/2sesP/0v16Dx8Q5Gu4BDlhZNqASsf
+kiy8NOTEoHPaqGsPUKvSKGbqmURHUz42NECu+2CiKVdJAe6J2b1FyMoMOr1gYsHz
+UEHOO7dJ1+1J8oIAMajcEUMVwNiFb7Wu+f+YxKdYsuFz9iO1Yvjc8NXBNrKAqXZQ
+wK6p7aaAX42QqjsrVVx7Vzl9uxeKivE1In+DMydFkA+Ds/WoGB2MzuekO+SHKxOw
+EqxtXtDflM/17yoqbFsu22YRPS73X2BTK7qSQH4tlZTKgNviqzQAUfRLYOm8vG/V
+mkDsXJGOKWUCcPd4atCjOhYBeqPoapLTQgRWSfLWtI9MunLoRLj1CdBHyd3H4vfe
+vGoeui2bF4s1B12dIefgUVNEYKBeFN8M+rBP5VFkt0hke3g2VRReSJN/9p+nI6ha
+TcohvrjZDe5mRrmarQDfPWhf7cXISZ7sm0KKoHZZrrxmkWAOVWzP69flHzPhd3bR
+4d4DO4SeEV5dJzj4gXbSRc2WMYE+A7YJrIMYLlizGUq7YxwI9mu5nzUqmNHQQl5l
+Mh2W35kYGl8clvRjQVZ5VPYX4UMWLZViMkLmQM/yoLkaV13ocj/GUOLOdq5w0/n2
+uxjblPtQibhxj2YTw7zN6fS1XHnC5xH29IWMq02NUg50En4LI03CLTnuNpmGXuMe
+oK/89hGUJKkInOXLWswx
+=B7uj
+-----END PGP SIGNATURE-----
