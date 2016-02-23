@@ -62,12 +62,15 @@ Current Limitations
 Installation Notes
 ~~~~~~~~~~~~~~~~~~
 
-- Always check in your distributions' repository first.
+- Check in your distributions' repository first. If it's too out of date,
+  use one of the following methods instead.
+- Package repos for various distros can be found on OpenSUSE Build Service
+  at the following URL: <https://software.opensuse.org/download.html?project=home%3Aethoms&package=netdrive-connector> .
+- Slackware has a SlackBuild available on SlackBuilds.org.
+- Prebuilt packages are avaibale in the 'packages' directory. Make sure
+  dependencies are installed (see below).
 - If no packages are available for your distribution, install distro specific
   dependencies then install from PyPi (pip).
-- Slackware has a SlackBuild maintained by me (primary developer).
-- I'll try to add more to the 'release' section as I get time and help to package 
-  for more distributions.
 
 **From PyPi (pip)**
 
@@ -108,6 +111,11 @@ See this `Alien How To <https://www.howtoforge.com/converting_rpm_to_deb_with_al
 
 Usage Notes
 ~~~~~~~~~~~
+
+Any regular user that adds a connection will need to know the root user password. This is the
+way that netdrive-connector elevates permissions. For a user that is an administrator 
+by use of sudo, they can set the root user password with the following command:
+``sudo passwd root``.
 
 Any regular user accounts that intend to mount a connection may need additional
 unix groups ( fuse, sshfs, davfs2). This varies depending on the distribution.

@@ -41,4 +41,9 @@ setup(
     entry_points={
         'console_scripts': [ 'netdrive-connector = netdriveconnector.main:main',],
     },
+    options = {
+        'build_scripts': {
+            'executable': '/usr/bin/env python2.7',
+        },
+    }, 
 )
