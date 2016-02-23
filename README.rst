@@ -24,15 +24,15 @@ News
 The changes are as follows:
 
 - Check for missing davfs2 group membership and warn user if so.
-- Use *fusermount -u* instead of *umount* for sshfs unmount. On some
+- Use *fusermount -u* instead of *umount* for sshfs unmount. On some 
   distros, unmount of a sshfs filesystem, by a normal user, will fail.
-- Big improvement to automatic mount and unmount at login/logout. 
+- Big improvement to automatic mount and unmount at login/logout.
   This is no longer KDE centric and should work on any DE/WM that uses 
   ``~/.config/autostart/*.desktop`` to start applications at login. 
-  So far it's tested on the following distros: Slackware, openSUSE,
-  Debian and Ubuntu. And the following DE's: KDE4, KDE5, Gnome shell, MATE, XFCE,
+  So far it's tested on the following distros: Slackware, openSUSE, Fedora, 
+  Debian and Ubuntu. And the following DE's: KDE4, KDE5, Gnome shell, MATE, XFCE, 
   LXDE, LXQt and Unity.
-- Fix bug in adding SFTP connection without password-less key. Now it
+- Fix bug in adding SFTP connection without password-less key. Now it 
   no longer specifies the ssh key in the mount options.
 
 
@@ -67,7 +67,7 @@ Installation Notes
 - Package repos for various distros can be found on OpenSUSE Build Service
   here: `<https://software.opensuse.org/download.html?project=home%3Aethoms&package=netdrive-connector>`_.
 - Slackware has a SlackBuild available on SlackBuilds.org.
-- Prebuilt packages are avaibale in the 'packages' directory. Make sure
+- Prebuilt packages are available in the 'packages' directory. Make sure
   dependencies are installed (see below).
 - If no packages are available for your distribution, install distro specific
   dependencies then install from PyPi (pip).
