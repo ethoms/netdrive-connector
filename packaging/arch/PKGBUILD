@@ -13,7 +13,7 @@ depends=('python2'
          'sshfs'
          'davfs2'
          'expect')
-makedepends=()
+makedepends=('python2-setuptools')
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/n/$pkgname/$pkgname-$pkgver.tar.gz")
 md5sums=('08f02dc3cb07212d1a0c04dae8cb20aa')
