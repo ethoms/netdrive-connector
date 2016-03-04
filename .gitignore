@@ -17,3 +17,6 @@ MANIFEST
 *.egg
 *.egg-info
 docs/_build
+
+# Arch AUR git project
+packaging/arch/netdrive-connector
